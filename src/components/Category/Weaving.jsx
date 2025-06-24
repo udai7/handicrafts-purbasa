@@ -104,14 +104,17 @@ const Handicrafts = () => {
   return (
     <div className="min-h-screen bg-amber-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        {/* Static Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-amber-600 to-amber-500"></div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-1/4 left-10 w-32 h-32 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-amber-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: "url(/Handicrafts.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-orange-900/60"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-28 flex flex-col items-center text-center">
           {/* Handcrafted Label */}
           <motion.div
@@ -122,7 +125,6 @@ const Handicrafts = () => {
           >
             Traditional Craftsmanship
           </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -130,7 +132,6 @@ const Handicrafts = () => {
           >
             The Art of <span className="text-amber-100">Handicrafts</span>
           </motion.h1>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -141,7 +142,6 @@ const Handicrafts = () => {
             the world, each piece reflecting centuries of tradition, skill, and
             cultural heritage.
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -161,7 +161,6 @@ const Handicrafts = () => {
               Meet Artisans
             </Link>
           </motion.div>
-
           {/* Featured Techniques Pills */}
           <motion.div
             className="flex flex-wrap justify-center gap-3 mt-12"

@@ -14,8 +14,8 @@ import Footer from "../components/Layout/Footer";
 const MOCK_PRODUCTS = [
   {
     productId: "1",
-    title: "Handcrafted Achaar Vase",
-    image: "/public/weaving.png",
+    title: "Bamboo candle Stand",
+    image: "/public/bp2.webp",
     price: 49.99,
     rating: 4.8,
     featured: true,
@@ -23,8 +23,8 @@ const MOCK_PRODUCTS = [
   },
   {
     productId: "2",
-    title: "Bamboo Basket Set",
-    image: "/public/Bg.jpg",
+    title: "Bamboo Pen Stand",
+    image: "/public/bp.webp",
     price: 29.99,
     rating: 4.6,
     featured: false,
@@ -32,8 +32,8 @@ const MOCK_PRODUCTS = [
   },
   {
     productId: "3",
-    title: "Artisan Textile Scarf",
-    image: "/public/image.png",
+    title: "Cotton Saree",
+    image: "/public/cc.webp",
     price: 39.99,
     rating: 4.9,
     featured: true,
@@ -41,8 +41,8 @@ const MOCK_PRODUCTS = [
   },
   {
     productId: "4",
-    title: "Handwoven Jewelry Box",
-    image: "/public/logo.png",
+    title: "Necklace and Earring Set",
+    image: "/public/j4.jpg",
     price: 59.99,
     rating: 4.7,
     featured: false,

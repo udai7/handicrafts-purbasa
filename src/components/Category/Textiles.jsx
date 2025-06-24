@@ -109,14 +109,17 @@ const Textiles = () => {
   return (
     <div className="min-h-screen bg-indigo-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        {/* Static Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-700"></div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-1/4 left-10 w-32 h-32 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: "url(/Textiles.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-blue-900/60"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-28 flex flex-col items-center text-center">
           {/* Handcrafted Label */}
           <motion.div
@@ -127,7 +130,6 @@ const Textiles = () => {
           >
             Woven Traditions
           </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -135,7 +137,6 @@ const Textiles = () => {
           >
             The Art of <span className="text-indigo-100">Textiles</span>
           </motion.h1>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -146,7 +147,6 @@ const Textiles = () => {
             the world, each piece embodying generations of tradition, skill, and
             cultural heritage.
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -166,7 +166,6 @@ const Textiles = () => {
               Meet Artisans
             </Link>
           </motion.div>
-
           {/* Featured Techniques Pills */}
           <motion.div
             className="flex flex-wrap justify-center gap-3 mt-12"

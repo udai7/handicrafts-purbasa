@@ -14,8 +14,8 @@ const Home = () => {
   const artisanData = [
     {
       id: "1",
-      name: "Purbasa Agartala",
-      image: "purbasa2.jpg",
+      name: "Purbasha Agartala",
+      image: "Purbasha2.jpg",
       location: "Agartala",
       rating: 4.8,
       reviewCount: 127,
@@ -27,8 +27,8 @@ const Home = () => {
     },
     {
       id: "2",
-      name: "Purbasa Mumbai",
-      image: "purbasa3.jpg",
+      name: "Purbasha Mumbai",
+      image: "Purbasha3.jpg",
       location: "Mumbai",
       rating: 4.6,
       reviewCount: 89,
@@ -40,8 +40,8 @@ const Home = () => {
     },
     {
       id: "3",
-      name: "Purbasa Kolkata",
-      image: "purbasa4.jpg",
+      name: "Purbasha Kolkata",
+      image: "Purbasha4.jpg",
       location: "Kolkata",
       rating: 4.9,
       reviewCount: 143,
@@ -53,8 +53,8 @@ const Home = () => {
     },
     {
       id: "4",
-      name: "Purbasa Bangalore",
-      image: "purbasa5.jpg",
+      name: "Purbasha Bangalore",
+      image: "Purbasha5.jpg",
       location: "Bangalore",
       rating: 4.7,
       reviewCount: 76,

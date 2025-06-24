@@ -76,10 +76,10 @@ const Footer = () => {
                 whileHover={{ rotate: 5, scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <span className="font-bold text-sm">AK</span>
+                <span className="font-bold text-sm">PB</span>
               </motion.div>
               <span className="text-xl font-bold text-gray-900">
-                Artisan<span className="text-amber-600">Kart</span>
+                Purba<span className="text-amber-600">sha</span>
               </span>
             </div>
             <p className="text-gray-600 mb-6">
@@ -101,7 +101,7 @@ const Footer = () => {
               <div className="flex items-center">
                 <Mail size={18} className="text-amber-600 mr-2" />
                 <span className="text-gray-600 text-sm">
-                  contact@artisankart.com
+                  contact@Purbasha.com
                 </span>
               </div>
             </div>
@@ -235,7 +235,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-500 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} ArtisanKart. All rights reserved.
+              © {new Date().getFullYear()} Purbasha. All rights reserved.
             </div>
 
             <div className="flex space-x-6">

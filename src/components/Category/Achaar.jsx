@@ -52,7 +52,39 @@ const Achaar = () => {
       try {
         setIsLoading(true);
         const response = await fetch_products();
-        const filtered = response.filter((p) => p.category === "Achaar");
+        let filtered = response.filter((p) => p.category === "Achaar");
+        // If no Achaar products from API, use fallback
+        if (filtered.length === 0) {
+          filtered = [
+            {
+              _id: "achaar1",
+              title: "Tripuri Mixed Achaar",
+              image: "/a3.jpeg",
+              price: 199,
+              rating: 4.8,
+              featured: true,
+              discountPercentage: 10,
+            },
+            {
+              _id: "achaar2",
+              title: "Spicy Mango Pickle",
+              image: "/a4.jpeg",
+              price: 179,
+              rating: 4.7,
+              featured: true,
+              discountPercentage: 15,
+            },
+            {
+              _id: "achaar3",
+              title: "Traditional Mixed Veg Achaar",
+              image: "/a5.jpeg",
+              price: 149,
+              rating: 4.6,
+              featured: true,
+              discountPercentage: 5,
+            },
+          ];
+        }
         setAchaarProducts(filtered);
         setIsLoading(false);
       } catch (error) {
@@ -112,14 +144,17 @@ const Achaar = () => {
   return (
     <div className="min-h-screen bg-amber-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        {/* Static Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-800 via-amber-700 to-amber-600"></div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-1/4 left-10 w-32 h-32 bg-amber-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-amber-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: "url(/Achaar.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-orange-900/60"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-28 flex flex-col items-center text-center">
           {/* Handcrafted Label */}
           <motion.div
@@ -130,7 +165,6 @@ const Achaar = () => {
           >
             Ancient Craftsmanship
           </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -138,7 +172,6 @@ const Achaar = () => {
           >
             Bold Taste <span className="text-amber-100">Tripuri Roots</span>
           </motion.h1>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -149,7 +182,6 @@ const Achaar = () => {
             each jar packed with bold flavors, indigenous ingredients, and
             generations of tradition.
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -169,7 +201,6 @@ const Achaar = () => {
               Visit Shops
             </Link>
           </motion.div>
-
           {/* Featured Techniques Pills */}
           <motion.div
             className="flex flex-wrap justify-center gap-3 mt-12"

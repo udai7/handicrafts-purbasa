@@ -142,11 +142,11 @@ const Navbar = () => {
             whileHover={{ rotate: 5, scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <span className="font-bold text-lg">AK</span>
+            <span className="font-bold text-lg">PB</span>
           </motion.div>
           <div className="ml-3">
             <span className="text-2xl font-bold text-gray-900 group-hover:text-amber-600 transition-all duration-300">
-              Artisan<span className="text-amber-600">Kart</span>
+              Purba<span className="text-amber-600">sha</span>
             </span>
             <span className="hidden sm:block text-xs text-gray-500 -mt-1">
               Handcrafted with love

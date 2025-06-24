@@ -26,8 +26,8 @@ const MOCK_CART_ITEMS = [
   {
     id: "1",
     productId: "1",
-    name: "Handcrafted Achaar Vase",
-    image: "/public/weaving.png",
+    name: "Bamboo candle Stand",
+    image: "/public/bp2.webp",
     price: 49.99,
     quantity: 2,
     artisan: "Asha Achaar",
@@ -35,8 +35,8 @@ const MOCK_CART_ITEMS = [
   {
     id: "2",
     productId: "2",
-    name: "Bamboo Basket Set",
-    image: "/public/Bg.jpg",
+    name: "Bamboo Pen Stand",
+    image: "/public/bp.webp",
     price: 29.99,
     quantity: 1,
     artisan: "Bamboo Crafts Co.",
@@ -44,8 +44,8 @@ const MOCK_CART_ITEMS = [
   {
     id: "3",
     productId: "3",
-    name: "Artisan Textile Scarf",
-    image: "/public/image.png",
+    name: "Cotton Saree",
+    image: "/public/cc.webp",
     price: 39.99,
     quantity: 3,
     artisan: "Textile Weavers",
@@ -53,8 +53,8 @@ const MOCK_CART_ITEMS = [
   {
     id: "4",
     productId: "4",
-    name: "Handwoven Jewelry Box",
-    image: "/public/logo.png",
+    name: "Necklace and Earring Set",
+    image: "/public/j4.jpg",
     price: 59.99,
     quantity: 1,
     artisan: "Jewelry Artisans",

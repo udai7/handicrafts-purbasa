@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ArtisanCard from "../components/Artisan/ArtisanCard";
 import { FaSearch, FaFilter, FaTimes } from "react-icons/fa";
 import Navbar from "../components/Layout/Navbar";
+import Footer from "../components/Layout/Footer";
 
 const ArtisanProfiles = () => {
   const [artisans, setArtisans] = useState([]);
@@ -40,22 +41,20 @@ const ArtisanProfiles = () => {
         {
           id: "1",
           name: "Purbasha Delhi",
-          image:
-            "/purbasa6.jpg",
+          image: "/Purbasha6.jpg",
           location: "Delhi Haat, New Delhi",
           rating: 4.8,
           reviewCount: 127,
           specialty: "Tribal Handicrafts",
           shortBio:
-            "Offering an exclusive collection of Tripura’s tribal handlooms, bamboo crafts, and pickles at Delhi’s cultural hub, Delhi Haat.",
+            "Offering an exclusive collection of Tripura's tribal handlooms, bamboo crafts, and pickles at Delhi's cultural hub, Delhi Haat.",
           featured: true,
           productCount: 24,
         },
         {
           id: "2",
-          name: "Purbasa Kolkata",
-          image:
-            "/purbasa5.jpg",
+          name: "Purbasha Kolkata",
+          image: "/Purbasha5.jpg",
           location: "Kolkata, West Bengal",
           rating: 4.6,
           reviewCount: 89,
@@ -68,8 +67,7 @@ const ArtisanProfiles = () => {
         {
           id: "3",
           name: "Purbasha Shillong",
-          image:
-            "/purbasa4.jpg",
+          image: "/Purbasha4.jpg",
           location: "Shillong, Meghalaya",
           rating: 4.9,
           reviewCount: 143,
@@ -81,9 +79,8 @@ const ArtisanProfiles = () => {
         },
         {
           id: "4",
-          name: "Purbasa Hauz Khas",
-          image:
-            "/purbasa3.jpg",
+          name: "Purbasha Hauz Khas",
+          image: "/Purbasha3.jpg",
           location: " Hauz Khas, New Delhi",
           rating: 4.7,
           reviewCount: 76,
@@ -96,8 +93,7 @@ const ArtisanProfiles = () => {
         {
           id: "5",
           name: "Purbasha Tripura Bhawan",
-          image:
-            "/purbasa2.jpg",
+          image: "/Purbasha2.jpg",
           location: "Tripura Bhawan, New Delhi",
           rating: 4.5,
           reviewCount: 92,
@@ -110,8 +106,7 @@ const ArtisanProfiles = () => {
         {
           id: "6",
           name: "Purbasha Central Showroom",
-          image:
-            "/purbasa1.jpg",
+          image: "/Purbasha1.jpg",
           location: " Agartala, Tripura",
           rating: 4.9,
           reviewCount: 108,
@@ -347,6 +342,7 @@ const ArtisanProfiles = () => {
           </>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
