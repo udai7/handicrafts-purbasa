@@ -117,16 +117,19 @@ const Bamboo = () => {
   return (
     <div className="min-h-screen bg-green-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        {/* Static Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-800 via-green-700 to-green-600"></div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-1/4 left-10 w-32 h-32 bg-green-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: "url(/bam.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-green-900/60"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-28 flex flex-col items-center text-center">
-          {/* Sustainable Label */}
+          {/* Handcrafted Label */}
           <motion.div
             className="bg-green-100/20 border border-green-100/30 text-green-50 px-4 py-1 rounded-full text-sm font-medium mb-6"
             initial={{ opacity: 0, y: -20 }}
@@ -135,15 +138,13 @@ const Bamboo = () => {
           >
             Sustainable Craftsmanship
           </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-white"
           >
-            The Art of <span className="text-green-100">Bamboo</span>
+            The Art of Bamboo
           </motion.h1>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -155,7 +156,6 @@ const Bamboo = () => {
             generations. Environmentally friendly, durable, and exquisitely
             crafted.
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -175,7 +175,6 @@ const Bamboo = () => {
               Meet Artisans
             </Link>
           </motion.div>
-
           {/* Featured Techniques Pills */}
           <motion.div
             className="flex flex-wrap justify-center gap-3 mt-12"
