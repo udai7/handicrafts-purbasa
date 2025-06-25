@@ -223,9 +223,9 @@ const Bamboo = () => {
               <ProductCard
                 product={{
                   id: 1,
-                  title: "Hand-thrown Ceramic Bowl",
+                  title: "Bamboo Pen Stand",
                   image:
-                    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
+                    "/public/bp.webp",
                   price: 45.99,
                   rating: 4.0,
                   featured: true,
@@ -244,9 +244,9 @@ const Bamboo = () => {
               <ProductCard
                 product={{
                   id: 2,
-                  title: "Woven Wall Hanging",
+                  title: "Bamboo Lamp",
                   image:
-                    "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=600&q=80",
+                    "/public/bamboo1 (1).webp",
                   price: 89.99,
                   rating: 4.0,
                   featured: false,
@@ -265,9 +265,9 @@ const Bamboo = () => {
               <ProductCard
                 product={{
                   id: 3,
-                  title: "Handcrafted Wooden Spoons (Set of 3)",
+                  title: "Bamboo Basket",
                   image:
-                    "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80",
+                    "/public/bamboo1 (2).jpg",
                   price: 35.5,
                   rating: 4.0,
                   featured: false,
@@ -286,9 +286,9 @@ const Bamboo = () => {
               <ProductCard
                 product={{
                   id: 4,
-                  title: "Hand-forged Copper Earrings",
+                  title: "Bamboo Chair",
                   image:
-                    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
+                    "/public/w2.jpeg",
                   price: 29.99,
                   rating: 5.0,
                   featured: false,

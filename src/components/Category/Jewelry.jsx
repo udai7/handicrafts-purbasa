@@ -215,12 +215,48 @@ const Jewelry = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Static featured products */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full"
+            >
+              <ProductCard
+                product={{
+                  id: "static1",
+                  title: "Gold Plated Necklace",
+                  image: "/j1.jpg",
+                  price: 129.99,
+                  rating: 4.9,
+                  featured: true,
+                }}
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.07 }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full"
+            >
+              <ProductCard
+                product={{
+                  id: "static2",
+                  title: "Handcrafted Bracelet",
+                  image: "/j2.jpg",
+                  price: 89.99,
+                  rating: 4.8,
+                  featured: true,
+                }}
+              />
+            </motion.div>
+            {/* Dynamic products */}
             {jewelryProducts.map((product, index) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: (index + 2) * 0.1 }}
                 className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full"
               >
                 <ProductCard product={product} />

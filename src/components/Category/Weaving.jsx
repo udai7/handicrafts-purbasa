@@ -209,9 +209,9 @@ const Handicrafts = () => {
               <ProductCard
                 product={{
                   id: 1,
-                  title: "Handwoven Cotton Shawl",
+                  title: "Wooden Dish",
                   image:
-                    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+                    "/public/w1.jpeg",
                   price: 29.99,
                   rating: 4.8,
                   featured: true,
@@ -227,9 +227,9 @@ const Handicrafts = () => {
               <ProductCard
                 product={{
                   id: 2,
-                  title: "Traditional Bamboo Basket",
+                  title: "Wooden Cutlery",
                   image:
-                    "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+                    "/public/w5.jpg",
                   price: 19.99,
                   rating: 4.6,
                   featured: false,
@@ -245,9 +245,9 @@ const Handicrafts = () => {
               <ProductCard
                 product={{
                   id: 3,
-                  title: "Colorful Wool Rug",
+                  title: "Wooden Furniture",
                   image:
-                    "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80",
+                    "/public/w6.jpg",
                   price: 49.99,
                   rating: 4.9,
                   featured: false,

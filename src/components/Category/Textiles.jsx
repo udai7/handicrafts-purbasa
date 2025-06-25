@@ -214,9 +214,9 @@ const Textiles = () => {
               <ProductCard
                 product={{
                   id: 1,
-                  title: "Hand-thrown Ceramic Bowl",
+                  title: "Cotton Saree",
                   image:
-                    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
+                    "/public/cc.webp",
                   price: 45.99,
                   rating: 4.0,
                   featured: true,
@@ -235,9 +235,9 @@ const Textiles = () => {
               <ProductCard
                 product={{
                   id: 2,
-                  title: "Woven Wall Hanging",
+                  title: "Silk Shawl",
                   image:
-                    "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=600&q=80",
+                    "/public/sw.jpg",
                   price: 89.99,
                   rating: 4.0,
                   featured: false,
@@ -256,9 +256,9 @@ const Textiles = () => {
               <ProductCard
                 product={{
                   id: 3,
-                  title: "Handcrafted Wooden Spoons (Set of 3)",
+                  title: "Cotton Scarf",
                   image:
-                    "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80",
+                    "/public/ww.webp",
                   price: 35.5,
                   rating: 4.0,
                   featured: false,
@@ -277,9 +277,9 @@ const Textiles = () => {
               <ProductCard
                 product={{
                   id: 4,
-                  title: "Hand-forged Copper Earrings",
+                  title: "Handloom Fabric",
                   image:
-                    "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
+                    "/public/Textiles.jpg",
                   price: 29.99,
                   rating: 5.0,
                   featured: false,

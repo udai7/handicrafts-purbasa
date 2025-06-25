@@ -315,7 +315,7 @@ const About = () => {
                       <p className="text-gray-700 mb-6">{artisan.bio}</p>
 
                       <h2 className="text-xl font-semibold mb-4">
-                        My Craft Story
+                        Purbasha's History
                       </h2>
                       <p className="text-gray-700">{artisan.story}</p>
                     </div>
