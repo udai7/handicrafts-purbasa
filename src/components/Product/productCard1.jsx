@@ -1,12 +1,16 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { FaStar, FaShoppingCart } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import { addtowishlist, removefromwishlist, fetchwishlist } from '../../utils/wishlist';
-import { toast } from 'react-toastify';
-import { UserContext } from '../../utils/user_context';
-import { memo } from 'react';
-import { Heart, ShoppingCart } from 'lucide-react';
-import { addToCart } from '../../utils/Cart';
+import React, { useContext, useState, useEffect } from "react";
+import { FaStar, FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import {
+  addtowishlist,
+  removefromwishlist,
+  fetchwishlist,
+} from "../../utils/wishlist";
+import { toast } from "react-toastify";
+import { UserContext } from "../../utils/user_context";
+import { memo } from "react";
+import { Heart, ShoppingCart } from "lucide-react";
+import { addToCart } from "../../utils/Cart";
 
 const ProductCard = memo(({ product }) => {
   const { user } = useContext(UserContext);
@@ -59,22 +63,21 @@ const ProductCard = memo(({ product }) => {
   const handleAddToCart = (e) => {
     e.stopPropagation();
     addToCart(user.id, product._id, 1)
-                          .then(() => {
-                            // Show a success message (optional)
-                            toast.success(`${product.title} added to cart`);
-                            // Navigate to cart page after adding to cart
-                            navigate("/cart");
-                          })
-                          .catch((error) => {
-                            // Handle any errors
-                            toast.error("Failed to add item to cart");
-                            console.error("Error adding to cart:", error);
-                          });
-
+      .then(() => {
+        // Show a success message (optional)
+        toast.success(`${product.title} added to cart`);
+        // Navigate to cart page after adding to cart
+        navigate("/cart");
+      })
+      .catch((error) => {
+        // Handle any errors
+        toast.error("Failed to add item to cart");
+        console.error("Error adding to cart:", error);
+      });
   };
 
   return (
-    <div 
+    <div
       className="group relative rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -96,7 +99,7 @@ const ProductCard = memo(({ product }) => {
         )}
 
         {/* Hover Overlay */}
-        <div 
+        <div
           className={`absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center transition-opacity duration-300 ${
             hovered ? "opacity-100" : "opacity-0"
           }`}
@@ -124,13 +127,13 @@ const ProductCard = memo(({ product }) => {
           className="absolute top-3 right-3 h-8 w-8 bg-white bg-opacity-80 backdrop-blur-sm hover:bg-amber-50 rounded-full flex items-center justify-center shadow-sm transition-colors z-10"
           title={isfav ? "Remove from Wishlist" : "Add to Wishlist"}
         >
-          <Heart 
-            size={16} 
+          <Heart
+            size={16}
             className={`transition-colors ${
-              isfav 
-                ? "text-red-500 fill-red-500" 
+              isfav
+                ? "text-red-500 fill-red-500"
                 : "text-gray-500 hover:text-red-500"
-            }`} 
+            }`}
           />
         </button>
       </div>
@@ -143,14 +146,12 @@ const ProductCard = memo(({ product }) => {
           </h3>
           <div className="flex items-center text-amber-500">
             <FaStar className="mr-1" />
-            <span className="text-sm font-medium">
-              {product.rating || 0}
-            </span>
+            <span className="text-sm font-medium">{product.rating || 0}</span>
           </div>
         </div>
         <div className="mt-2 flex justify-between items-center">
-          <span className="text-xl font-bold text-amber-600">
-            ${product.price.toFixed(2)}
+          <span className="text-lg font-bold text-amber-600">
+            ₹{(product.price * 83).toLocaleString()}
           </span>
           {product.discountPercentage && (
             <span className="text-sm text-green-600 bg-green-50 px-2 py-1 rounded-full">
@@ -163,6 +164,6 @@ const ProductCard = memo(({ product }) => {
   );
 });
 
-ProductCard.displayName = 'ProductCard';
+ProductCard.displayName = "ProductCard";
 
 export default ProductCard;

@@ -261,7 +261,7 @@ const Checkout = () => {
                       </div>
                       <div className="text-right mt-2 sm:mt-0">
                         <span className="text-xl font-bold text-amber-600">
-                          ${item.price.toFixed(2)}
+                          ₹{(item.price * 83).toLocaleString()}
                         </span>
                       </div>
                     </div>
@@ -273,16 +273,22 @@ const Checkout = () => {
             <div className="mt-8 bg-white rounded-xl p-6 flex flex-col sm:flex-row justify-between items-center shadow">
               <div className="text-lg text-gray-700 font-semibold mb-2 sm:mb-0">
                 Subtotal:{" "}
-                <span className="text-gray-900">${subtotal.toFixed(2)}</span>{" "}
+                <span className="text-gray-900">
+                  ₹{(subtotal * 83).toLocaleString()}
+                </span>{" "}
                 &nbsp; | &nbsp; Shipping:{" "}
                 <span className="text-gray-900">
-                  {shippingCost === 0 ? "Free" : `$${shippingCost}`}
+                  {shippingCost === 0
+                    ? "Free"
+                    : `₹${(shippingCost * 83).toLocaleString()}`}
                 </span>{" "}
                 &nbsp; | &nbsp; Tax:{" "}
-                <span className="text-gray-900">${tax.toFixed(2)}</span>
+                <span className="text-gray-900">
+                  ₹{(tax * 83).toLocaleString()}
+                </span>
               </div>
               <div className="text-2xl font-bold text-amber-700">
-                Total: ${total.toFixed(2)}
+                Total: ₹{(total * 83).toLocaleString()}
               </div>
             </div>
           </div>

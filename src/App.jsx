@@ -20,6 +20,8 @@ import AboutUs from "./pages/about";
 import App2 from "../Admin-Frontend/src/App";
 import Wishlist from "./pages/Wishlist";
 import Handicrafts from "./components/Category/Weaving";
+import MyProfile from "./pages/MyProfile";
+import MyOrders from "./pages/MyOrders";
 
 axios.defaults.withCredentials = true;
 
@@ -62,6 +64,8 @@ function AppContent() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/admin-panel/*" element={<App2 />} />
+        <Route path="/my-profile" element={<MyProfile />} />
+        <Route path="/my-orders" element={<MyOrders />} />
       </Routes>
     </UserContext.Provider>
   );

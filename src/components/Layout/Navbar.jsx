@@ -123,9 +123,9 @@ const Navbar = () => {
   // Navigation menu items
   const navItems = [
     { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
     { name: "Products", path: "/shop" },
     { name: "Shop", path: "/artisans" },
-    { name: "About", path: "/about" },
   ];
 
   return (

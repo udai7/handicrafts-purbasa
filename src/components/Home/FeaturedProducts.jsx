@@ -3,17 +3,23 @@ import { Link } from "react-router-dom";
 import ProductCard from "../Product/ProductCard";
 
 const FeaturedProducts = ({
-  heading = "Featured Products",
+  heading = "Best Deal of the Day",
   subheading = "Handcrafted With Love",
   description = "Unique treasures handpicked from our most talented artisans, each telling a story of tradition and craftsmanship.",
   buttonText = "View All Products",
   products = [],
+  gridClass = "grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8",
+  showStrikethrough = true,
 }) => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
 
   // Enhanced ProductCard component with more features
   const EnhancedProductCard = ({ product }) => {
     const isHovered = hoveredProduct === product.id;
+
+    // Calculate previous price if not provided
+    const previousPrice =
+      product.previousPrice || (product.price * 1.2).toFixed(2);
 
     return (
       <div
@@ -86,17 +92,6 @@ const FeaturedProducts = ({
             <Link to={`/product/${product.id}`}>{product.name}</Link>
           </h3>
 
-          {/* Artisan Info */}
-          <div className="text-gray-500 text-sm mb-2">
-            by{" "}
-            <Link
-              to={`/artisan/${product.artisanId}`}
-              className="hover:text-amber-600 transition-colors"
-            >
-              {product.artisan}
-            </Link>
-          </div>
-
           {/* Ratings */}
           <div className="flex items-center mb-3">
             <div className="flex text-amber-500">
@@ -122,10 +117,17 @@ const FeaturedProducts = ({
           </div>
 
           {/* Price and Add to Cart */}
-          <div className="mt-auto flex items-center justify-between">
-            <span className="text-gray-900 font-bold">
-              ${product.price.toFixed(2)}
-            </span>
+          <div className="mt-auto flex items-center justify-between w-full">
+            <div className="flex flex-col items-start">
+              {showStrikethrough && (
+              <span className="text-gray-500 line-through mr-2">
+                ₹{(previousPrice * 83).toLocaleString()}
+              </span>
+              )}
+              <span className="text-lg font-bold text-amber-600">
+                ₹{(product.price * 83).toLocaleString()}
+              </span>
+            </div>
             <button className="bg-amber-100 text-amber-700 hover:bg-amber-600 hover:text-white py-2 px-3 rounded-lg text-sm font-medium transition-colors flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +193,7 @@ const FeaturedProducts = ({
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className={`grid ${gridClass}`}>
           {products.map((product) => (
             <EnhancedProductCard key={product.id} product={product} />
           ))}

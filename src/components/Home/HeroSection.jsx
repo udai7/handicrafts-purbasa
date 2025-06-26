@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const coverImages = [
+  "/pic/cover%20pic.jpg",
+  "/pic/cover%20pic%202.jpg",
+  "/pic/cover%20pic%203.jpg",
+];
+
 const HeroSection = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % coverImages.length);
+    }, 4000); // Change image every 4 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       className="relative min-h-[100vh] flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: "url(/Bg.jpg)",
+        backgroundImage: `url(${coverImages[currentImage]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        transition: "background-image 1s ease-in-out",
       }}
     >
       {/* Overlay for readability */}
@@ -33,13 +49,12 @@ const HeroSection = () => {
 
         {/* Animated Heading */}
         <motion.h1
-          className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-white drop-shadow-lg"
+          className="text-7xl md:text-9xl font-extrabold mb-6 leading-tight text-white drop-shadow-lg"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          Traditions <span className="text-amber-600">Crafted</span> Culture
-          Delivered
+          Tripura <span className="text-amber-500">Craft</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -49,54 +64,13 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Discover the rich heritage of Tripura through handcrafted wonders made
-          by local artisans. Support tradition, shop authentic—directly from the
-          heart of the Northeast.
+          Threads & Treasures from the Hills.
         </motion.p>
 
         {/* Buttons with Animations */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          {/* Shop Button with Amber Theme */}
-          <Link
-            to="/shop"
-            className="bg-gradient-to-r from-amber-600 to-amber-500 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-md transition-all duration-200 hover:shadow-lg"
-          >
-            View Products
-          </Link>
-
-          {/* Artisans Button with Simpler Effect */}
-          <Link
-            to="/artisans"
-            className="bg-white/80 border border-amber-200 text-gray-900 px-8 py-4 text-lg font-semibold rounded-full shadow-sm transition-all duration-200 hover:bg-white"
-          >
-            Visit Shops
-          </Link>
-        </motion.div>
-
+        {/* Removed View Products and Visit Shops buttons */}
         {/* Featured Crafts Pills */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-3 mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          {["Achaar", "Handicrafts", "Textiles", "Jewelry", "Bamboo"].map(
-            (craft) => (
-              <Link
-                key={craft}
-                to={`/category/${craft.toLowerCase()}`}
-                className="bg-white/70 border border-amber-100 text-gray-800 px-4 py-1 rounded-full text-sm hover:bg-amber-100 transition-colors"
-              >
-                {craft}
-              </Link>
-            )
-          )}
-        </motion.div>
+        {/* Removed category buttons (Achaar, Handicrafts, Textiles, Jewelry, Bamboo) */}
       </div>
     </section>
   );

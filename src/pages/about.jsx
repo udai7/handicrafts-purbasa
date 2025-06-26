@@ -155,9 +155,18 @@ const About = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-50 min-h-screen pt-20">
+      <div className="bg-gray-50 min-h-screen pt-20 relative overflow-hidden">
+        {/* Watermark background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <img
+            src="/pic/em.jpg"
+            alt="Watermark"
+            className="pointer-events-none select-none w-full h-full object-cover opacity-10 mix-blend-multiply"
+            style={{ filter: "blur(1px)" }}
+          />
+        </div>
         {/* Cover Image */}
-        <div className="relative h-64 md:h-80 w-full">
+        <div className="relative h-64 md:h-80 w-full z-10">
           <img
             src="/Purbasha2.jpg"
             alt="Cover"
@@ -166,234 +175,130 @@ const About = () => {
         </div>
 
         {/* Profile Section */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-10">
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
-            <div className="p-6 sm:p-8">
-              <div className="flex flex-col md:flex-row">
-                {/* Profile Image */}
-                <div className="flex-shrink-0 mb-4 md:mb-0">
-                  <img
-                    src={artisan.profileImage}
-                    alt={artisan.name}
-                    className="w-32 h-32 rounded-full border-4 border-white shadow-md object-cover"
-                  />
-                </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20">
+          <div className="w-full h-80 md:h-96 rounded-lg overflow-hidden shadow-lg mb-6 relative">
+            {/* Top shadow behind the image */}
+            <div className="absolute top-0 left-0 w-full h-16 md:h-24 z-0 bg-gradient-to-b from-black/40 to-transparent rounded-t-lg"></div>
+            <img
+              src="/pic/pp.jpg"
+              alt="Tripura Handloom"
+              className="w-full h-full object-cover relative z-10"
+            />
+          </div>
+          {/* Only the About content and handloom section remain below */}
+          <Tab.Group selectedIndex={activeTab} onChange={setActiveTab}>
+            <Tab.List className="flex border-t border-gray-200">
+              <Tab
+                className={({ selected }) =>
+                  `py-4 px-6 text-sm font-medium focus:outline-none transition-colors
+                ${
+                  selected
+                    ? "text-indigo-600 border-b-2 border-indigo-600"
+                    : "text-gray-500 hover:text-gray-700"
+                }`
+                }
+              >
+                About
+              </Tab>
+            </Tab.List>
 
-                {/* Profile Info */}
-                <div className="md:ml-6 flex-grow">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-                    <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-                      {artisan.name}
-                    </h1>
-                    <div className="flex items-center mt-2 sm:mt-0">
-                      <FaStar className="text-yellow-400 mr-1" />
-                      <span className="font-medium">{artisan.rating}</span>
-                      <span className="text-gray-500 ml-1">
-                        ({artisan.reviewCount} reviews)
-                      </span>
-                    </div>
+            <Tab.Panels>
+              {/* About Panel */}
+              <Tab.Panel className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="md:col-span-2">
+                    <h2
+                      className="text-xl font-semibold mb-4 font-cursive"
+                      style={{ fontFamily: "Dancing Script, cursive" }}
+                    >
+                      Purbasha's History
+                    </h2>
+                    <p className="text-gray-700 mb-6">{artisan.bio}</p>
+
+                    <h2
+                      className="text-xl font-semibold mb-4 font-cursive"
+                      style={{ fontFamily: "Dancing Script, cursive" }}
+                    >
+                      Tripura Handloom: A Tapestry of Tradition and Culture
+                    </h2>
+                    <p className="text-gray-700 mb-6">
+                      Tripura, nestled in the northeast of India, is a land rich
+                      in cultural heritage and traditional crafts. Among its
+                      many artistic expressions, handloom weaving stands out as
+                      a timeless emblem of the state's indigenous identity.
+                      Rooted deeply in the customs of the tribal and non-tribal
+                      communities of the region, Tripura's handloom sector
+                      reflects not only artistic excellence but also a source of
+                      livelihood for thousands.
+                    </p>
+                    <h3
+                      className="text-lg font-semibold mb-2 font-cursive"
+                      style={{ fontFamily: "Dancing Script, cursive" }}
+                    >
+                      A Living Heritage
+                    </h3>
+                    <p className="text-gray-700 mb-4">
+                      The art of handloom weaving in Tripura has been passed
+                      down through generations, especially among the tribal
+                      communities such as the Reangs, Lushais, and Tripuris.
+                      Each community has developed its unique motifs, patterns,
+                      and techniques that are rich in symbolism and tradition.
+                      Women, in particular, play a vital role in the weaving
+                      process, often using loin looms (also known as backstrap
+                      looms) — a portable and indigenous type of loom that gives
+                      the weaver complete control over the design and weave.
+                    </p>
+                    <h3
+                      className="text-lg font-semibold mb-2 font-cursive"
+                      style={{ fontFamily: "Dancing Script, cursive" }}
+                    >
+                      Distinctive Designs and Products
+                    </h3>
+                    <p className="text-gray-700 mb-4">
+                      Tripura's handloom is known for its vibrant colors,
+                      geometrical patterns, and eco-friendly materials. The
+                      fabrics often feature traditional designs like rignai,
+                      rihamp, and kamchwlwi borok, which hold cultural
+                      significance.
+                    </p>
+                    <p className="text-gray-700 mb-4">
+                      Handloom products from the state include:
+                    </p>
+                    <ul className="list-disc pl-6 text-gray-700 mb-4">
+                      <li>
+                        Traditional garments like rignai (wraparound skirts),
+                        risa (breast cloth), and rikutu (upper body wrap)
+                      </li>
+                      <li>Elegant stoles, scarves, shawls, and dupattas</li>
+                      <li>
+                        Contemporary home décor items such as cushion covers,
+                        curtains, and table runners
+                      </li>
+                    </ul>
                   </div>
 
-                  <div className="mb-4">
-                    <div className="flex items-center text-gray-600 mb-2">
-                      <FaMapMarkerAlt className="mr-2 text-gray-500" />
-                      <span>{artisan.location}</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      {artisan.craftType.map((craft, index) => (
-                        <span
+                  <div>
+                    <h2 className="text-xl font-semibold mb-4">
+                      Awards & Recognition
+                    </h2>
+                    <div className="space-y-4">
+                      {artisan.awards.map((award, index) => (
+                        <div
                           key={index}
-                          className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full"
+                          className="border-l-4 border-indigo-500 pl-4 py-2"
                         >
-                          {craft}
-                        </span>
+                          <div className="font-medium">{award.title}</div>
+                          <div className="text-sm text-gray-600">
+                            {award.organization}, {award.year}
+                          </div>
+                        </div>
                       ))}
                     </div>
-                    <div className="text-sm text-gray-500">
-                      Artisan since {artisan.yearStarted}
-                    </div>
-                  </div>
-
-                  {/* Contact & Social */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="flex items-center text-gray-600">
-                      <FaPhoneAlt className="mr-2 text-gray-500" />
-                      <span>{artisan.phone}</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <FaEnvelope className="mr-2 text-gray-500" />
-                      <span>{artisan.email}</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <FaGlobe className="mr-2 text-gray-500" />
-                      <span>{artisan.website}</span>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <a
-                        href={`https://instagram.com/${artisan.socialMedia.instagram}`}
-                        className="text-pink-600 hover:text-pink-700"
-                      >
-                        <FaInstagram className="text-xl" />
-                      </a>
-                      <a
-                        href={`https://facebook.com/${artisan.socialMedia.facebook}`}
-                        className="text-blue-600 hover:text-blue-700"
-                      >
-                        <FaFacebook className="text-xl" />
-                      </a>
-                      <a
-                        href={`https://twitter.com/${artisan.socialMedia.twitter}`}
-                        className="text-blue-400 hover:text-blue-500"
-                      >
-                        <FaTwitter className="text-xl" />
-                      </a>
-                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Tabs */}
-            <Tab.Group selectedIndex={activeTab} onChange={setActiveTab}>
-              <Tab.List className="flex border-t border-gray-200">
-                <Tab
-                  className={({ selected }) =>
-                    `py-4 px-6 text-sm font-medium focus:outline-none transition-colors
-                  ${
-                    selected
-                      ? "text-indigo-600 border-b-2 border-indigo-600"
-                      : "text-gray-500 hover:text-gray-700"
-                  }`
-                  }
-                >
-                  About
-                </Tab>
-                <Tab
-                  className={({ selected }) =>
-                    `py-4 px-6 text-sm font-medium focus:outline-none transition-colors
-                  ${
-                    selected
-                      ? "text-indigo-600 border-b-2 border-indigo-600"
-                      : "text-gray-500 hover:text-gray-700"
-                  }`
-                  }
-                >
-                  Products
-                </Tab>
-                <Tab
-                  className={({ selected }) =>
-                    `py-4 px-6 text-sm font-medium focus:outline-none transition-colors
-                  ${
-                    selected
-                      ? "text-indigo-600 border-b-2 border-indigo-600"
-                      : "text-gray-500 hover:text-gray-700"
-                  }`
-                  }
-                >
-                  Gallery
-                </Tab>
-                <Tab
-                  className={({ selected }) =>
-                    `py-4 px-6 text-sm font-medium focus:outline-none transition-colors
-                  ${
-                    selected
-                      ? "text-indigo-600 border-b-2 border-indigo-600"
-                      : "text-gray-500 hover:text-gray-700"
-                  }`
-                  }
-                >
-                  Reviews
-                </Tab>
-              </Tab.List>
-
-              <Tab.Panels>
-                {/* About Panel */}
-                <Tab.Panel className="p-6">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="md:col-span-2">
-                      <h2 className="text-xl font-semibold mb-4">Bio</h2>
-                      <p className="text-gray-700 mb-6">{artisan.bio}</p>
-
-                      <h2 className="text-xl font-semibold mb-4">
-                        Purbasha's History
-                      </h2>
-                      <p className="text-gray-700">{artisan.story}</p>
-                    </div>
-
-                    <div>
-                      <h2 className="text-xl font-semibold mb-4">
-                        Awards & Recognition
-                      </h2>
-                      <div className="space-y-4">
-                        {artisan.awards.map((award, index) => (
-                          <div
-                            key={index}
-                            className="border-l-4 border-indigo-500 pl-4 py-2"
-                          >
-                            <div className="font-medium">{award.title}</div>
-                            <div className="text-sm text-gray-600">
-                              {award.organization}, {award.year}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </Tab.Panel>
-
-                {/* Products Panel */}
-                <Tab.Panel className="p-6">
-                  <h2 className="text-xl font-semibold mb-6">
-                    Products by {artisan.name}
-                  </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {artisan.products.map((product) => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                  </div>
-                </Tab.Panel>
-                {/* Gallery Panel */}
-                <Tab.Panel className="p-6">
-                  <h2 className="text-xl font-semibold mb-6">Gallery</h2>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {artisan.gallery.map((img, idx) => (
-                      <img
-                        key={idx}
-                        src={img}
-                        alt={`Gallery ${idx + 1}`}
-                        className="rounded-lg shadow-md object-cover w-full h-40"
-                      />
-                    ))}
-                  </div>
-                </Tab.Panel>
-                {/* Reviews Panel */}
-                <Tab.Panel className="p-6">
-                  <h2 className="text-xl font-semibold mb-6">
-                    Customer Reviews
-                  </h2>
-                  <div className="space-y-6">
-                    {artisan.reviews.map((review) => (
-                      <div
-                        key={review.id}
-                        className="bg-gray-100 rounded-lg p-4 shadow-sm"
-                      >
-                        <div className="flex items-center mb-2">
-                          <FaStar className="text-yellow-400 mr-1" />
-                          <span className="font-medium text-gray-800 mr-2">
-                            {review.user}
-                          </span>
-                          <span className="text-gray-500 text-sm">
-                            {review.date}
-                          </span>
-                        </div>
-                        <div className="text-gray-700">{review.comment}</div>
-                      </div>
-                    ))}
-                  </div>
-                </Tab.Panel>
-              </Tab.Panels>
-            </Tab.Group>
-          </div>
+              </Tab.Panel>
+            </Tab.Panels>
+          </Tab.Group>
         </div>
       </div>
       <Footer />

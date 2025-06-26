@@ -224,14 +224,11 @@ const categoryThemes = {
 };
 
 // Memoized category card for performance
-const CategoryCard = memo(({ category, onClick }) => {
+const CategoryCard = memo(({ category }) => {
   const { name, description, image } = category;
   const theme = categoryThemes[name] || categoryThemes.Handicrafts;
   return (
-    <div
-      className="flex-shrink-0 w-64 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer"
-      onClick={onClick}
-    >
+    <div className="flex-shrink-0 w-64 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group">
       {/* Top section with full image background */}
       <div className="relative h-40 overflow-hidden">
         <img src={image} alt={name} className="w-full h-full object-cover" />
@@ -278,31 +275,24 @@ const CategorySection = () => {
     },
     {
       id: 2,
-      name: "Achaar",
+      name: "Jewelry",
       description:
-        "Handcrafted ceramic art and functional Achaar shaped with precision and artistic expression by skilled artisans.",
-      image: "/Achaar.jpg",
+        "Handcrafted ornaments and accessories featuring traditional metalwork, gemstones, and culturally significant designs.",
+      image: "/j1.jpg",
     },
     {
       id: 3,
-      name: "Bamboo",
-      description:
-        "Sustainable bamboo products and decorative items that blend functionality with traditional craftsmanship.",
-      image: "/Bamboo.jpg",
-    },
-    {
-      id: 4,
       name: "Textiles",
       description:
         "Exquisite hand-loomed fabrics and garments featuring intricate patterns and natural dyes from regional textile traditions.",
       image: "/Textiles.jpg",
     },
     {
-      id: 5,
-      name: "Jewelry",
+      id: 4,
+      name: "Pickle",
       description:
-        "Handcrafted ornaments and accessories featuring traditional metalwork, gemstones, and culturally significant designs.",
-      image: "/j1.jpg",
+        "Handcrafted ceramic art and functional Achaar shaped with precision and artistic expression by skilled artisans.",
+      image: "/Achaar.jpg",
     },
   ];
 
@@ -335,13 +325,9 @@ const CategorySection = () => {
 
         {/* Centered grid of categories */}
         <div className="flex justify-center w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {categories.map((category) => (
-              <CategoryCard
-                key={category.id}
-                category={category}
-                onClick={() => handleCategoryClick(category.name)}
-              />
+              <CategoryCard key={category.id} category={category} />
             ))}
           </div>
         </div>

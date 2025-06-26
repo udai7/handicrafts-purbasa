@@ -210,8 +210,7 @@ const Handicrafts = () => {
                 product={{
                   id: 1,
                   title: "Wooden Dish",
-                  image:
-                    "/public/w1.jpeg",
+                  image: "/public/w1.jpeg",
                   price: 29.99,
                   rating: 4.8,
                   featured: true,
@@ -228,8 +227,7 @@ const Handicrafts = () => {
                 product={{
                   id: 2,
                   title: "Wooden Cutlery",
-                  image:
-                    "/public/w5.jpg",
+                  image: "/public/w5.jpg",
                   price: 19.99,
                   rating: 4.6,
                   featured: false,
@@ -246,8 +244,7 @@ const Handicrafts = () => {
                 product={{
                   id: 3,
                   title: "Wooden Furniture",
-                  image:
-                    "/public/w6.jpg",
+                  image: "/public/w6.jpg",
                   price: 49.99,
                   rating: 4.9,
                   featured: false,

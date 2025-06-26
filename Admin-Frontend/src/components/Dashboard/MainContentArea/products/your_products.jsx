@@ -1,23 +1,33 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import { ImageOff, Loader2, Edit, Trash2, Tag, Package, Search, RefreshCw } from 'lucide-react';
-import { AdminContext } from '../../../../utils/admin_context';
-import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-import EditProduct from './edit_product';
-import StockBadge from './stockbadge';
+import React, { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import {
+  ImageOff,
+  Loader2,
+  Edit,
+  Trash2,
+  Tag,
+  Package,
+  Search,
+  RefreshCw,
+} from "lucide-react";
+import { AdminContext } from "../../../../utils/admin_context";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import EditProduct from "./edit_product";
+import StockBadge from "./stockbadge";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [sortBy, setSortBy] = useState('title');
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortBy, setSortBy] = useState("title");
+  const [sortOrder, setSortOrder] = useState("asc");
   const { admin } = useContext(AdminContext);
   const [editingProduct, setEditingProduct] = useState(null);
-  const link=import.meta.env.VITE_BACKEND_LINK;
+  const link = import.meta.env.VITE_BACKEND_LINK;
+  const [hostedProducts, setHostedProducts] = useState([]);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -30,9 +40,9 @@ const ProductList = () => {
       });
       setProducts(res.data.data || []);
     } catch (err) {
-      console.error('Failed to fetch products:', err);
-      setError('Failed to load products. Please try again.');
-      toast.error('Failed to load products. Please try again.');
+      console.error("Failed to fetch products:", err);
+      setError("Failed to load products. Please try again.");
+      toast.error("Failed to load products. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -46,59 +56,117 @@ const ProductList = () => {
 
   const deleteProduct = async (id) => {
     if (!id) return;
-    
-    if (window.confirm('Are you sure you want to delete this product?')) {
+
+    if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        const response = await axios.delete(`${link}/api/admin/products/delete/${id}`);
+        const response = await axios.delete(
+          `${link}/api/admin/products/delete/${id}`
+        );
         if (response.status === 200) {
-          setProducts(products.filter(product => product._id !== id));
-          toast.success('Product deleted successfully');
+          setProducts(products.filter((product) => product._id !== id));
+          toast.success("Product deleted successfully");
         }
       } catch (err) {
-        console.error('Failed to delete product:', err);
-        toast.error('Failed to delete product. Please try again.');
+        console.error("Failed to delete product:", err);
+        toast.error("Failed to delete product. Please try again.");
       }
     }
   };
 
   const handleProductUpdate = (updatedProduct) => {
-    setProducts(products.map(product => 
-      product._id === updatedProduct._id ? updatedProduct : product
-    ));
+    setProducts(
+      products.map((product) =>
+        product._id === updatedProduct._id ? updatedProduct : product
+      )
+    );
   };
 
-  const categories = [...new Set(products.map(product => product.category).filter(Boolean))];
+  const categories = [
+    ...new Set(products.map((product) => product.category).filter(Boolean)),
+  ];
 
   const filteredProducts = products
-    .filter(product => 
-      (product.title?.toLowerCase() || '').includes(searchTerm.toLowerCase()) &&
-      (selectedCategory === '' || product.category === selectedCategory)
+    .filter(
+      (product) =>
+        (product.title?.toLowerCase() || "").includes(
+          searchTerm.toLowerCase()
+        ) &&
+        (selectedCategory === "" || product.category === selectedCategory)
     )
     .sort((a, b) => {
       let comparison = 0;
-      if (sortBy === 'title') {
-        comparison = (a.title || '').localeCompare(b.title || '');
-      } else if (sortBy === 'price') {
+      if (sortBy === "title") {
+        comparison = (a.title || "").localeCompare(b.title || "");
+      } else if (sortBy === "price") {
         comparison = (a.price || 0) - (b.price || 0);
-      } else if (sortBy === 'stock') {
+      } else if (sortBy === "stock") {
         comparison = (a.totalStock || 0) - (b.totalStock || 0);
       }
-      return sortOrder === 'asc' ? comparison : -comparison;
+      return sortOrder === "asc" ? comparison : -comparison;
     });
 
   const handleSort = (field) => {
     if (sortBy === field) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
     } else {
       setSortBy(field);
-      setSortOrder('asc');
+      setSortOrder("asc");
     }
   };
 
   const calculateDiscount = (price, salePrice) => {
     if (!price || !salePrice || Number(price) <= Number(salePrice)) return 0;
-    return Math.round(((Number(price) - Number(salePrice)) / Number(price)) * 100);
+    return Math.round(
+      ((Number(price) - Number(salePrice)) / Number(price)) * 100
+    );
   };
+
+  // Dummy products from Featured section if products list is empty
+  const dummyProducts = [
+    {
+      _id: "1",
+      title: "Pinapple Bamboo Lamp",
+      image: "/pic/3.jpg",
+      price: 45.99,
+      totalStock: 25,
+      productId: "PBL-001",
+      salePrice: 45.99,
+      discount: 0,
+    },
+    {
+      _id: "2",
+      title: "Bamboo Earring Set",
+      image: "/pic/7.jpeg",
+      price: 89.99,
+      totalStock: 12,
+      productId: "BES-002",
+      salePrice: 89.99,
+      discount: 0,
+    },
+    {
+      _id: "3",
+      title: "Landloom Saree",
+      image: "/pic/12.webp",
+      price: 35.5,
+      totalStock: 8,
+      productId: "LS-003",
+      salePrice: 35.5,
+      discount: 0,
+    },
+  ];
+
+  const displayProducts =
+    products.length === 0 ? dummyProducts : filteredProducts;
+
+  const durationOptions = [
+    { label: "24 hr", value: "24hr" },
+    { label: "2 day", value: "2d" },
+    { label: "3 day", value: "3d" },
+    { label: "4 day", value: "4d" },
+    { label: "5 day", value: "5d" },
+    { label: "6 day", value: "6d" },
+    { label: "1 week", value: "1w" },
+  ];
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
@@ -142,7 +210,7 @@ const ProductList = () => {
               <select
                 value={`${sortBy}-${sortOrder}`}
                 onChange={(e) => {
-                  const [field, order] = e.target.value.split('-');
+                  const [field, order] = e.target.value.split("-");
                   setSortBy(field);
                   setSortOrder(order);
                 }}
@@ -159,93 +227,151 @@ const ProductList = () => {
           </div>
         </div>
 
-        {error && <div className="text-red-500 text-center">{error}</div>}
+        {error && null}
 
         {loading ? (
           <div className="flex justify-center items-center h-64 bg-white rounded-lg shadow-md">
             <Loader2 className="animate-spin w-8 h-8 text-indigo-600" />
-            <span className="ml-2 text-indigo-600 text-lg">Loading products...</span>
+            <span className="ml-2 text-indigo-600 text-lg">
+              Loading products...
+            </span>
           </div>
-        ) : filteredProducts.length === 0 ? (
+        ) : displayProducts.length === 0 ? (
           <div className="text-center bg-white rounded-lg shadow-md p-10">
             <ImageOff className="mx-auto mb-4 w-16 h-16 text-gray-400" />
             <p className="text-xl text-gray-500">No products found</p>
-            <p className="text-gray-400 mt-2">Try changing your search or filter criteria</p>
+            <p className="text-gray-400 mt-2">
+              Try changing your search or filter criteria
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((product) => {
-              const discountPercentage = calculateDiscount(product.price, product.salePrice);
-              
+            {displayProducts.map((product, idx) => {
+              const discountPercentage = calculateDiscount(
+                product.price,
+                product.salePrice
+              );
+              const isHosted = hostedProducts.includes(product._id);
               return (
                 <div
                   key={product._id}
-                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 overflow-hidden"
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden border border-blue-100"
                 >
                   <div className="relative">
                     <img
-                      src={product.image || 'https://via.placeholder.com/400x300.png?text=No+Image'}
+                      src={
+                        product.image ||
+                        "https://via.placeholder.com/400x300.png?text=No+Image"
+                      }
                       alt={product.title}
-                      className="w-full h-56 object-cover"
+                      className="w-full h-56 object-cover rounded-t-2xl border-b-4 border-blue-200"
                       onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/400x300.png?text=No+Image';
+                        e.target.src =
+                          "https://via.placeholder.com/400x300.png?text=No+Image";
                       }}
                     />
                     {discountPercentage > 0 && (
-                      <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-md font-semibold">
+                      <div className="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-md font-semibold shadow">
                         {discountPercentage}% OFF
                       </div>
                     )}
                   </div>
-                  <div className="p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-lg font-semibold text-gray-800 truncate">{product.title}</h3>
-                      <div className="flex space-x-1">
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setEditingProduct(product);
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-gray-800 mb-2">
+                      {product.title}
+                    </h3>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-gray-500 text-sm">
+                        Product ID:{" "}
+                        <span className="font-semibold text-gray-700">
+                          {product.productId || product._id}
+                        </span>
+                      </span>
+                      <span className="text-gray-500 text-sm">
+                        Stock:{" "}
+                        <span className="font-semibold text-gray-700">
+                          {product.totalStock || 0}
+                        </span>
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xl font-bold text-blue-600">
+                        ₹{(product.salePrice * 83).toLocaleString()}
+                      </span>
+                      {discountPercentage > 0 && (
+                        <span className="text-gray-400 line-through text-sm">
+                          ₹{(product.price * 83).toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-2 flex flex-col gap-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Deal/Discount (%)
+                      </label>
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="number"
+                          min="0"
+                          max="100"
+                          value={product.discount || 0}
+                          onChange={(e) => {
+                            const discount = Math.max(
+                              0,
+                              Math.min(100, Number(e.target.value))
+                            );
+                            const newSalePrice =
+                              product.price * (1 - discount / 100);
+                            if (products.length === 0) {
+                              displayProducts[idx].discount = discount;
+                              displayProducts[idx].salePrice = newSalePrice;
+                              setProducts([]); // force re-render
+                            } else {
+                              // Update real product (if needed)
+                            }
                           }}
-                          className="p-1 text-gray-500 hover:text-indigo-600 transition"
-                          aria-label="Edit product"
+                          className="w-20 px-2 py-1 border border-blue-300 rounded focus:ring-2 focus:ring-blue-500"
+                        />
+                        <select
+                          value={product.dealDuration || "24hr"}
+                          onChange={(e) => {
+                            if (products.length === 0) {
+                              displayProducts[idx].dealDuration =
+                                e.target.value;
+                              setProducts([]); // force re-render
+                            } else {
+                              // Update real product (if needed)
+                            }
+                          }}
+                          className="px-2 py-1 border border-blue-300 rounded focus:ring-2 focus:ring-blue-500"
                         >
-                          <Edit className="w-4 h-4" />
-                        </button>
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            deleteProduct(product._id);
-                          }} 
-                          className="p-1 text-gray-500 hover:text-red-600 transition"
-                          aria-label="Delete product"
+                          {durationOptions.map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      {!isHosted ? (
+                        <button
+                          className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg shadow transition"
+                          onClick={() =>
+                            setHostedProducts([...hostedProducts, product._id])
+                          }
                         >
-                          <Trash2 className="w-4 h-4" />
+                          Host Product
                         </button>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center mb-3">
-                      <Tag className="w-4 h-4 text-gray-500 mr-1" />
-                      <span className="text-sm text-gray-500">{product.category || 'Uncategorized'}</span>
-                    </div>
-                    
-                    <div className="flex justify-between items-center mb-3">
-                      <div>
-                        {product.salePrice && Number(product.salePrice) < Number(product.price) ? (
-                          <div className="flex items-center">
-                            <span className="text-lg font-bold text-gray-800">₹{product.salePrice}</span>
-                            <span className="ml-2 text-sm text-gray-500 line-through">₹{product.price}</span>
-                          </div>
-                        ) : (
-                          <span className="text-lg font-bold text-gray-800">₹{product.price || 0}</span>
-                        )}
-                      </div>
-                      <StockBadge stock={product.totalStock || 0} />
-                    </div>
-                    
-                    <div className="flex items-center text-gray-600 text-sm">
-                      <Package className="w-4 h-4 mr-1" />
-                      <span>{product.totalStock || 0} in stock</span>
+                      ) : (
+                        <button
+                          className="mt-2 w-full bg-white border border-blue-600 text-blue-600 font-semibold py-2 rounded-lg shadow hover:bg-blue-50 transition"
+                          onClick={() =>
+                            setHostedProducts(
+                              hostedProducts.filter((id) => id !== product._id)
+                            )
+                          }
+                        >
+                          Remove Hosting
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -255,13 +381,13 @@ const ProductList = () => {
         )}
 
         <div className="mt-6 text-center text-gray-500">
-          Showing {filteredProducts.length} of {products.length} products
+          Showing {displayProducts.length} of {products.length} products
         </div>
       </div>
       {editingProduct && (
-        <EditProduct 
-          product={editingProduct} 
-          onClose={() => setEditingProduct(null)} 
+        <EditProduct
+          product={editingProduct}
+          onClose={() => setEditingProduct(null)}
           onProductUpdated={handleProductUpdate}
         />
       )}

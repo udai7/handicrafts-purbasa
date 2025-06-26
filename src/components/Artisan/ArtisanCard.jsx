@@ -21,15 +21,26 @@ const ArtisanCard = ({ artisan, highlighted }) => {
     productCount = 24,
   } = artisan || {};
 
+  // Extract city for Google Maps (use last part after comma, or fallback to location)
+  let city = location;
+  if (location && location.includes(",")) {
+    const parts = location.split(",");
+    city = parts[parts.length - 1].trim();
+    // If city is too generic (like 'Delhi Haat'), fallback to last part
+    if (city.toLowerCase().includes("delhi haat")) {
+      city = "New Delhi";
+    }
+  }
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    city
+  )}`;
+
   return (
     <div className="relative">
       {highlighted && (
         <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-blue-200 to-blue-100 opacity-70 blur-sm"></div>
       )}
       <div
-        onClick={() => {
-          handleClick(artisan.id);
-        }}
         className={`overflow-hidden rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 ${
           highlighted ? "ring-4 ring-blue-200 ring-inset scale-105 z-20" : ""
         }`}
@@ -82,12 +93,14 @@ const ArtisanCard = ({ artisan, highlighted }) => {
 
           <p className="text-sm text-gray-600 mb-4 line-clamp-2">{shortBio}</p>
 
-          <button
-            className="block w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-center rounded-md transition-colors duration-300 cursor-not-allowed"
-            disabled
+          <a
+            href={googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white text-center rounded-md transition-colors duration-300"
           >
             View Store
-          </button>
+          </a>
         </div>
       </div>
     </div>

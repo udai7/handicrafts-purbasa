@@ -27,6 +27,7 @@ import {
 
 const Overview = () => {
   const [timePeriod, setTimePeriod] = useState("month");
+  const [selectedCategory, setSelectedCategory] = useState("Handicrafts");
 
   const salesData = [
     { name: "Jan", sales: 4000, orders: 240 },
@@ -38,15 +39,53 @@ const Overview = () => {
     { name: "Jul", sales: 9490, orders: 570 },
   ];
 
+  const salesDataByCategory = {
+    Handicrafts: [
+      { name: "Jan", sales: 4000 },
+      { name: "Feb", sales: 3000 },
+      { name: "Mar", sales: 5000 },
+      { name: "Apr", sales: 2780 },
+      { name: "May", sales: 6890 },
+      { name: "Jun", sales: 7390 },
+      { name: "Jul", sales: 9490 },
+    ],
+    Jewelry: [
+      { name: "Jan", sales: 2000 },
+      { name: "Feb", sales: 1800 },
+      { name: "Mar", sales: 2500 },
+      { name: "Apr", sales: 1780 },
+      { name: "May", sales: 2890 },
+      { name: "Jun", sales: 3390 },
+      { name: "Jul", sales: 4490 },
+    ],
+    Textiles: [
+      { name: "Jan", sales: 1500 },
+      { name: "Feb", sales: 1200 },
+      { name: "Mar", sales: 1700 },
+      { name: "Apr", sales: 980 },
+      { name: "May", sales: 1890 },
+      { name: "Jun", sales: 2390 },
+      { name: "Jul", sales: 3490 },
+    ],
+    Pickle: [
+      { name: "Jan", sales: 1000 },
+      { name: "Feb", sales: 900 },
+      { name: "Mar", sales: 1200 },
+      { name: "Apr", sales: 780 },
+      { name: "May", sales: 990 },
+      { name: "Jun", sales: 1390 },
+      { name: "Jul", sales: 1490 },
+    ],
+  };
+
   const categoryData = [
-    { name: "Weaving", value: 35 },
-    { name: "Achaar", value: 25 },
-    { name: "Bamboo", value: 15 },
-    { name: "Textiles", value: 15 },
-    { name: "Jewelry", value: 10 },
+    { name: "Handicrafts", value: 35 },
+    { name: "Pickle", value: 25 },
+    { name: "Textiles", value: 20 },
+    { name: "Jewelry", value: 20 },
   ];
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
+  const COLORS = ["#6366F1", "#F59E42", "#10B981", "#F43F5E"];
 
   // Stats cards data with growth indicators
   const statsCards = [
@@ -66,17 +105,49 @@ const Overview = () => {
     },
     {
       title: "Total Revenue",
-      value: "$50,000",
+      value: "₹41,00,000",
       growth: -3.5,
       icon: <CreditCard className="text-blue-600" size={24} />,
       bgColor: "bg-blue-50",
     },
     {
-      title: "Active Artisans",
+      title: "Active Products",
       value: "150",
       growth: 5.7,
       icon: <Users className="text-amber-600" size={24} />,
       bgColor: "bg-amber-50",
+    },
+    {
+      title: "Handicrafts Sold",
+      value: "320",
+      growth: 4.2,
+      icon: <Package className="text-purple-600" size={24} />,
+      bgColor: "bg-purple-50",
+      revenue: 320 * 4999,
+    },
+    {
+      title: "Jewelry Sold",
+      value: "210",
+      growth: 3.1,
+      icon: <Package className="text-pink-600" size={24} />,
+      bgColor: "bg-pink-50",
+      revenue: 210 * 2999,
+    },
+    {
+      title: "Textiles Sold",
+      value: "180",
+      growth: 2.7,
+      icon: <Package className="text-blue-400" size={24} />,
+      bgColor: "bg-blue-100",
+      revenue: 180 * 1999,
+    },
+    {
+      title: "Pickle Sold",
+      value: "140",
+      growth: 1.9,
+      icon: <Package className="text-green-500" size={24} />,
+      bgColor: "bg-green-100",
+      revenue: 140 * 499,
     },
   ];
 
@@ -190,6 +261,14 @@ const Overview = () => {
               <p className="text-3xl font-bold mt-1 text-gray-800">
                 {card.value}
               </p>
+              {card.revenue && (
+                <p className="text-sm text-gray-500 mt-1">
+                  Revenue:{" "}
+                  <span className="font-semibold">
+                    ₹{card.revenue.toLocaleString()}
+                  </span>
+                </p>
+              )}
             </div>
           </div>
         ))}
@@ -201,15 +280,27 @@ const Overview = () => {
         <div className="bg-white p-6 rounded-xl shadow-sm lg:col-span-2">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-semibold text-gray-800">Sales Trend</h3>
-            <div className="flex items-center text-gray-500">
-              <TrendingUp size={16} className="mr-1" />
-              <span className="text-sm">+12.5% from last period</span>
+            <div className="flex items-center gap-4">
+              <select
+                className="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-200"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="Handicrafts">Handicrafts</option>
+                <option value="Jewelry">Jewelry</option>
+                <option value="Textiles">Textiles</option>
+                <option value="Pickle">Pickle</option>
+              </select>
+              <div className="flex items-center text-gray-500">
+                <TrendingUp size={16} className="mr-1" />
+                <span className="text-sm">+12.5% from last period</span>
+              </div>
             </div>
           </div>
           <div className="h-72">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
-                data={salesData}
+                data={salesDataByCategory[selectedCategory]}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -219,7 +310,15 @@ const Overview = () => {
                 <Line
                   type="monotone"
                   dataKey="sales"
-                  stroke="#6366F1"
+                  stroke={
+                    selectedCategory === "Handicrafts"
+                      ? "#6366F1"
+                      : selectedCategory === "Jewelry"
+                      ? "#F43F5E"
+                      : selectedCategory === "Textiles"
+                      ? "#10B981"
+                      : "#F59E42"
+                  }
                   strokeWidth={2}
                   dot={{ r: 4 }}
                   activeDot={{ r: 6 }}

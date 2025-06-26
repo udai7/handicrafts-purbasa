@@ -26,38 +26,38 @@ const MOCK_CART_ITEMS = [
   {
     id: "1",
     productId: "1",
-    name: "Bamboo candle Stand",
-    image: "/public/bp2.webp",
-    price: 49.99,
+    name: "Wooden Water Bottle",
+    image: "/public/pic/2.jpg",
+    price: 29.99,
     quantity: 2,
-    artisan: "Asha Achaar",
+    artisan: "Ravi Kumar",
   },
   {
     id: "2",
-    productId: "2",
-    name: "Bamboo Pen Stand",
-    image: "/public/bp.webp",
-    price: 29.99,
+    productId: "4",
+    name: "Bamboo Necklace and Earrings",
+    image: "/public/pic/6.jpg",
+    price: 24.99,
     quantity: 1,
-    artisan: "Bamboo Crafts Co.",
+    artisan: "Suman Das",
   },
   {
     id: "3",
-    productId: "3",
-    name: "Cotton Saree",
-    image: "/public/cc.webp",
-    price: 39.99,
+    productId: "5",
+    name: "Wooden Necklace and Earrings",
+    image: "/public/pic/5.jpg",
+    price: 14.99,
     quantity: 3,
-    artisan: "Textile Weavers",
+    artisan: "Amit Roy",
   },
   {
     id: "4",
-    productId: "4",
-    name: "Necklace and Earring Set",
-    image: "/public/j4.jpg",
+    productId: "8",
+    name: "Mango Pickle",
+    image: "/public/a4.jpeg",
     price: 59.99,
     quantity: 1,
-    artisan: "Jewelry Artisans",
+    artisan: "Rina Paul",
   },
 ];
 
@@ -251,14 +251,10 @@ const Cart = () => {
                           <h3 className="text-lg font-semibold text-gray-800 hover:text-amber-600 transition cursor-pointer">
                             {item.name}
                           </h3>
-                          <p className="text-gray-500 text-sm flex items-center mt-1">
-                            <FaMapMarkerAlt className="text-amber-500 mr-2" />
-                            {item.artisan}
-                          </p>
                         </div>
                         <div className="text-right mt-2 sm:mt-0">
                           <span className="text-xl font-bold text-gray-900">
-                            ${item.price.toFixed(2)}
+                            ₹{(item.price * 83).toLocaleString()}
                           </span>
                         </div>
                       </div>
@@ -286,7 +282,8 @@ const Cart = () => {
                         </div>
                         <div className="flex items-center space-x-3 mt-2 sm:mt-0">
                           <span className="font-semibold text-gray-700">
-                            ${(item.price * item.quantity).toFixed(2)}
+                            ₹
+                            {(item.price * item.quantity * 83).toLocaleString()}
                           </span>
                           <button
                             onClick={() => moveToWishlist(item)}
@@ -319,26 +316,32 @@ const Cart = () => {
             <div className="space-y-3 mb-6">
               <div className="flex justify-between text-gray-700">
                 <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>₹{(subtotal * 83).toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-gray-700">
                 <span>Discount</span>
-                <span className="text-green-600">-${discount.toFixed(2)}</span>
+                <span className="text-green-600">
+                  -₹{(discount * 83).toLocaleString()}
+                </span>
               </div>
               <div className="flex justify-between text-gray-700">
                 <span>Delivery</span>
-                <span>{shippingCost === 0 ? "Free" : `$${shippingCost}`}</span>
+                <span>
+                  {shippingCost === 0
+                    ? "Free"
+                    : `₹${(shippingCost * 83).toLocaleString()}`}
+                </span>
               </div>
               <div className="flex justify-between text-gray-700">
                 <span>Tax</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>₹{(tax * 83).toLocaleString()}</span>
               </div>
               <div className="flex justify-between items-center mt-4">
                 <span className="font-semibold text-lg text-gray-900">
                   Total
                 </span>
                 <span className="font-bold text-2xl text-amber-600">
-                  ${total.toFixed(2)}
+                  ₹{(total * 83).toLocaleString()}
                 </span>
               </div>
             </div>

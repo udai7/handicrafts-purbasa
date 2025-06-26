@@ -58,9 +58,9 @@ const Home = () => {
       location: "Bangalore",
       rating: 4.7,
       reviewCount: 76,
-      specialty: "Achaar",
+      specialty: "Pickle",
       shortBio:
-        "Creates handcrafted blue achaar using techniques passed down for generations in his family.",
+        "Creates handcrafted blue pickle using techniques passed down for generations in his family.",
       featured: false,
       productCount: 15,
     },
@@ -221,17 +221,17 @@ const FAQSection = () => {
     {
       question: "What if I'm not satisfied with my purchase?",
       answer:
-        "Your satisfaction is our top priority. If you’re not fully happy with your purchase, we offer a hassle-free return and exchange policy. You can return most items within 7 days of receiving them, provided they are unused, in their original condition, and with all original tags or packaging intact.",
+        "Your satisfaction is our top priority. If you're not fully happy with your purchase, we offer a hassle-free return and exchange policy. You can return most items within 7 days of receiving them, provided they are unused, in their original condition, and with all original tags or packaging intact.",
     },
     {
       question: "How can I track my order?",
       answer:
-        "Once your order is shipped, you’ll receive a tracking ID via email or SMS, which you can use on our 'Track My Order' page to follow the delivery status. We don’t enable direct contact with artisans, but we do share their stories and welcome you to send any feedback or special requests through us—were happy to pass them on to the makers behind the craft.",
+        "Once your order is shipped, you'll receive a tracking ID via email or SMS, which you can use on our 'Track My Order' page to follow the delivery status. We don't enable direct contact with artisans, but we do share their stories and welcome you to send any feedback or special requests through us—we're happy to pass them on to the makers behind the craft.",
     },
     {
       question: "Can I contact the artisan directly?",
       answer:
-        "While we do not currently allow direct contact with artisans for privacy and logistical reasons, we ensure that every artisan’s story, background, and cultural significance are shared on our platform. You’ll often find their profiles or short bios featured on the product pages or in our “Meet the Makers” section.",
+        "While we do not currently allow direct contact with artisans for privacy and logistical reasons, we ensure that every artisan's story, background, and cultural significance are shared on our platform. You'll often find their profiles or short bios featured on the product pages or in our \"Meet the Makers\" section.",
     },
   ];
   const [openIndex, setOpenIndex] = useState(null);
@@ -330,60 +330,53 @@ function FeaturedProductsSection() {
   const products = [
     {
       id: 1,
-      name: "Spicy Mango Pickle",
+      name: "Pinapple Bamboo Lamp",
       price: 45.99,
-      artisan: "Maria Gonzalez",
-      artisanId: 12,
-      image: "/a6.jpeg",
+      image: "/pic/3.jpg",
       rating: 4.8,
       reviewCount: 32,
       badge: "Featured",
-      tag: "Handmade",
+      tag: "Handicraft",
     },
     {
       id: 2,
-      name: "Bamboo Pen Stand Set",
+      name: "Bamboo Earring Set",
       price: 89.99,
-      artisan: "Leila Johnson",
-      artisanId: 5,
-      image: "/bp.webp",
+      image: "/pic/7.jpeg",
       rating: 4.9,
       reviewCount: 17,
       badge: "Featured",
-      tag: "Eco-friendly",
+      tag: "Jewelry",
     },
     {
       id: 3,
-      name: "Handloom Cotton Saree",
+      name: "Landloom Saree",
       price: 35.5,
-      artisan: "Thomas Wilson",
-      artisanId: 8,
-      image: "/cc.webp",
+      image: "/pic/12.webp",
       rating: 4.7,
       reviewCount: 24,
       badge: "Featured",
-      tag: "Sustainable",
+      tag: "Textiles",
     },
     {
       id: 4,
-      name: "Hand-Made Beads Bracelet",
+      name: "Spicy Mango Pickle",
       price: 29.99,
-      artisan: "Amara Patel",
-      artisanId: 3,
-      image: "/j2.jpg",
+      image: "/pic/man.webp",
       rating: 5.0,
       reviewCount: 11,
       badge: "Featured",
-      tag: "Fair Trade",
+      tag: "Pickle",
     },
   ];
   return (
     <FeaturedProducts
-      heading="Featured Products"
+      heading="Best Deal of the Day"
       subheading="Handcrafted With Love"
       description="Unique treasures handpicked from our most talented artisans, each telling a story of tradition and craftsmanship."
       buttonText="View All Products"
       products={products}
+      showStrikethrough={true}
     />
   );
 }
@@ -392,51 +385,43 @@ function NewArrivalsSection() {
   const products = [
     {
       id: 5,
-      name: "Garlic & Red Chili Pickle",
+      name: "Bamboo and Wooden Furniture",
       price: 24.99,
-      artisan: "Nina Rao",
-      artisanId: 14,
-      image: "/Achaar2.jpg",
+      image: "/pic/4.jpg",
       rating: 4.6,
       reviewCount: 8,
       badge: "New Arrival",
-      tag: "Mouth Watering",
+      tag: "Handicrafts",
     },
     {
       id: 6,
-      name: "Loom-Woven Scarves",
+      name: "Bamboo Necklace and Earrings",
       price: 39.99,
-      artisan: "Saanvi Mehra",
-      artisanId: 9,
-      image: "/ww.webp",
+      image: "/pic/6.jpg",
       rating: 4.8,
       reviewCount: 15,
       badge: "New Arrival",
-      tag: "Handmade",
+      tag: "Jewelry",
     },
     {
       id: 7,
-      name: "Wooden Candle Holder",
+      name: "Tribal Style Scarf",
       price: 19.99,
-      artisan: "Lucas Kim",
-      artisanId: 21,
-      image: "/bp2.webp",
+      image: "/pic/10.jpg",
       rating: 4.7,
       reviewCount: 10,
       badge: "New Arrival",
-      tag: "Sustainable",
+      tag: "Textiles",
     },
     {
       id: 8,
-      name: "Multicolor Thread Earrings",
+      name: "Spicy Garlic and Veg pickle",
       price: 59.99,
-      artisan: "Fatima Noor",
-      artisanId: 7,
-      image: "/ee.jpg",
+      image: "/pic/2pp.jpg",
       rating: 4.9,
       reviewCount: 19,
       badge: "New Arrival",
-      tag: "Fair Trade",
+      tag: "Pickle",
     },
   ];
   return (
@@ -446,6 +431,7 @@ function NewArrivalsSection() {
       description="Discover the latest additions to our artisan collection, fresh from the hands of our talented creators."
       buttonText="View All New Arrivals"
       products={products}
+      showStrikethrough={false}
     />
   );
 }
@@ -454,51 +440,43 @@ function FlagshipItemsSection() {
   const products = [
     {
       id: 9,
-      name: "Heritage Eri Silk Shawl",
+      name: "Wooden Water Bottle",
       price: 129.99,
-      artisan: "Priya Singh",
-      artisanId: 18,
-      image: "/sw.jpg",
+      image: "/pic/2.jpg",
       rating: 5.0,
       reviewCount: 27,
       badge: "Flagship",
-      tag: "Iconic",
+      tag: "Handicraft",
     },
     {
       id: 10,
-      name: "Ethnic Carved Coffee Table",
+      name: "Wooden Necklace and Earings",
       price: 54.99,
-      artisan: "Carlos Rivera",
-      artisanId: 11,
-      image: "/ct.webp",
+      image: "/pic/5.jpg",
       rating: 4.8,
       reviewCount: 21,
       badge: "Flagship",
-      tag: "Handmade",
+      tag: "Jewelry",
     },
     {
       id: 11,
-      name: "Heritage Necklace and Earrings Set",
+      name: "Silk Saree",
       price: 74.99,
-      artisan: "Meera Das",
-      artisanId: 6,
-      image: "/j4.jpg",
+      image: "/pic/11.webp",
       rating: 4.9,
       reviewCount: 18,
       badge: "Flagship",
-      tag: "Traditional",
+      tag: "Textiles",
     },
     {
       id: 12,
-      name: "Premium Wooden Salad Bowl",
+      name: "Bamboo Shoot Pickle",
       price: 64.99,
-      artisan: "Ethan Brown",
-      artisanId: 15,
-      image: "/bb.webp",
+      image: "/pic/bbp.webp",
       rating: 4.7,
       reviewCount: 13,
       badge: "Flagship",
-      tag: "Eco Friendly",
+      tag: "Pickle",
     },
   ];
   return (
@@ -508,6 +486,7 @@ function FlagshipItemsSection() {
       description="Explore our most iconic and celebrated artisan creations, loved by our community."
       buttonText="View Flagship Items"
       products={products}
+      showStrikethrough={false}
     />
   );
 }

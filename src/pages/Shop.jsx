@@ -39,16 +39,16 @@ import {
   removefromwishlist,
 } from "../utils/wishlist";
 import ProductCard from "../components/Product/productCard1";
+import Footer from "../components/Layout/Footer";
 // In your JSX, add this somewhere (usually near the top)
 <ToastContainer position="bottom-right" autoClose={3000} />;
 
 const categories = [
   { id: "all", name: "All Categories", icon: <ShoppingBag size={16} /> },
   { id: "Handicrafts", name: "Handicrafts", icon: <Scissors size={16} /> },
-  { id: "Achaar", name: "Achaar", icon: <Combine size={16} /> },
-  { id: "Bamboo", name: "Bamboo Crafts", icon: <Sparkles size={16} /> },
-  { id: "Textiles", name: "Textiles", icon: <Shirt size={16} /> },
   { id: "Jewelry", name: "Jewelry", icon: <Diamond size={16} /> },
+  { id: "Textiles", name: "Textiles", icon: <Shirt size={16} /> },
+  { id: "Achaar", name: "Pickle", icon: <Combine size={16} /> },
 ];
 import Navbar from "../components/Layout/Navbar";
 
@@ -56,100 +56,96 @@ import Navbar from "../components/Layout/Navbar";
 const DUMMY_PRODUCTS = [
   {
     _id: "1",
-    title: "Heritage Eri Silk Shawl",
+    title: "Wooden Water Bottle",
     price: 29.99,
     artisan: "Ravi Kumar",
-    category: "Textiles",
-    subcategory: "Men",
-    image: "/public/sw.jpg",
+    category: "Handicrafts",
+    subcategory: "Essentials",
+    image: "/public/pic/2.jpg",
     rating: 4.7,
     featured: true,
   },
   {
     _id: "2",
-    title: "Loom-Woven Scarves",
+    title: "Wooden Fruit Basket",
     price: 99.99,
     artisan: "Anita Devi",
-    category: "Textiles",
-    subcategory: "Women",
-    image: "/public/ww.webp",
+    category: "Handicrafts",
+    subcategory: "Essentials",
+    image: "/public/pic/bas.jpg",
     rating: 4.9,
     featured: false,
   },
   {
     _id: "3",
-    title: "Cotton Saree",
+    title: "Wooden Toy",
     price: 19.99,
     artisan: "Priya Singh",
-    category: "Textiles",
-    subcategory: "Kids",
-    image: "/public/cc.webp",
+    category: "Handicrafts",
+    subcategory: "Toys",
+    image: "/public/pic/toy.png",
     rating: 4.6,
     featured: false,
   },
   {
     _id: "4",
-    title: "Bamboo Pen Stand",
+    title: "Bamboo Necklace and Earrings",
     price: 24.99,
     artisan: "Suman Das",
-    category: "Bamboo",
-    subcategory: "Gifts",
-    image: "/public/bp.webp",
+    category: "Jewelry",
+    image: "/public/pic/6.jpg",
     rating: 4.8,
     featured: true,
   },
   {
     _id: "5",
-    title: "Bamboo Candle Holder",
+    title: "Wooden Necklace and Earrings",
     price: 14.99,
     artisan: "Amit Roy",
-    category: "Bamboo",
-    subcategory: "Toys",
-    image: "/public/bp2.webp",
+    category: "Jewelry",
+    image: "/public/pic/5.jpg",
     rating: 4.5,
     featured: false,
   },
   {
     _id: "6",
-    title: "wooden Bowl",
+    title: "Handloom Saree",
     price: 59.99,
     artisan: "Rina Paul",
-    category: "Handicrafts",
+    category: "Textiles",
     subcategory: "Furnitures",
-    image: "/public/bb.webp",
+    image: "/public/pic/11.webp",
     rating: 4.7,
     featured: false,
   },
   {
     _id: "7",
-    title: "Spiced Mango Achaar",
+    title: "Silk Saree",
+    price: 59.99,
+    artisan: "Rina Paul",
+    category: "Textiles",
+    subcategory: "Furnitures",
+    image: "/public/pic/12.webp",
+    rating: 4.7,
+    featured: false,
+  },
+  {
+    _id: "8",
+    title: "Mango Pickle",
     price: 59.99,
     artisan: "Rina Paul",
     category: "Achaar",
-    subcategory: "Furnitures",
-    image: "/public/a6.jpeg",
+    image: "/public/pic/man.webp",
     rating: 4.7,
     featured: false,
   },
   {
-    _id: "8",
-    title: "Handcrafted Necklace",
+    _id: "9",
+    title: "Bamboo Shoot Pickle",
     price: 59.99,
     artisan: "Rina Paul",
-    category: "Jewelry",
-    subcategory: "Furnitures",
-    image: "/public/j1.jpg",
-    rating: 4.7,
-    featured: false,
-  },
-  {
-    _id: "8",
-    title: "Handcrafted Bracelet",
-    price: 59.99,
-    artisan: "Rina Paul",
-    category: "Jewelry",
-    subcategory: "Furnitures",
-    image: "/public/j2.jpg",
+    category: "Achaar",
+    image: "/public/pic/bbp.webp",
     rating: 4.7,
     featured: false,
   },
@@ -391,61 +387,13 @@ const Shop = () => {
         </div>
       </div>
 
-      {/* Extra filters for Textiles and Bamboo Crafts */}
-      {state.selectedCategory === "Textiles" && (
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Textiles Type
-          </label>
-          <select
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-amber-500"
-            value={state.textilesType || ""}
-            onChange={(e) =>
-              setState((prev) => ({
-                ...prev,
-                textilesType: e.target.value,
-                activePage: 1,
-              }))
-            }
-          >
-            <option value="">All</option>
-            <option value="Men">Men</option>
-            <option value="Women">Women</option>
-            <option value="Kids">Kids</option>
-          </select>
-        </div>
-      )}
-      {state.selectedCategory === "Handicrafts" && (
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Handicrafts Type
-          </label>
-          <select
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-amber-500"
-            value={state.handicraftsType || ""}
-            onChange={(e) =>
-              setState((prev) => ({
-                ...prev,
-                handicraftsType: e.target.value,
-                activePage: 1,
-              }))
-            }
-          >
-            <option value="">All</option>
-            <option value="Gifts">Gifts</option>
-            <option value="Toys">Toys</option>
-            <option value="Furnitures">Furnitures</option>
-          </select>
-        </div>
-      )}
-
       {/* Price Range */}
       <div className="mb-8">
         <h3 className="font-medium text-gray-700 mb-6">Price Range</h3>
         <div className="space-y-6">
           <div className="flex justify-between items-center text-sm text-gray-500 mb-2">
-            <span>${state.priceRange.min}</span>
-            <span>${state.priceRange.max}</span>
+            <span>₹{(state.priceRange.min * 83).toLocaleString()}</span>
+            <span>₹{(state.priceRange.max * 83).toLocaleString()}</span>
           </div>
           <div className="relative h-1 bg-gray-200 rounded-full">
             <div
@@ -459,7 +407,7 @@ const Shop = () => {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm text-gray-600 mb-2">
-                Min ($)
+                Min (₹)
               </label>
               <input
                 type="number"
@@ -474,7 +422,7 @@ const Shop = () => {
             </div>
             <div>
               <label className="block text-sm text-gray-600 mb-2">
-                Max ($)
+                Max (₹)
               </label>
               <input
                 type="number"
@@ -645,134 +593,157 @@ const Shop = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar></Navbar>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-25">
-        <button
-          onClick={() =>
-            setState((prev) => ({ ...prev, mobileFiltersOpen: true }))
-          }
-          className="md:hidden w-full mb-6 flex items-center justify-center gap-2 py-2.5 px-4 bg-white shadow-sm rounded-lg hover:bg-gray-50 transition-colors"
-          aria-label="Open filters"
-        >
-          <Filter size={18} className="text-amber-600" />
-          <span className="font-medium">Filter Products</span>
-        </button>
-
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="hidden md:block w-full md:w-80">
-            <FilterSection />
-          </div>
-
-          <div className="flex-1">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-xl shadow-sm mb-6"
-            >
-              <p className="text-gray-600 mb-3 sm:mb-0">
-                <span className="font-medium">
-                  {state.filteredProducts.length}
-                </span>{" "}
-                products
-                {state.selectedCategory !== "all" && (
-                  <span>
-                    {" "}
-                    in{" "}
-                    <span className="text-amber-600 font-medium">
-                      {
-                        categories.find((c) => c.id === state.selectedCategory)
-                          ?.name
-                      }
-                    </span>
-                  </span>
-                )}
-              </p>
-              <div className="flex items-center gap-3">
-                <label className="text-gray-600">Sort by:</label>
-                <select
-                  value={state.sortBy}
-                  onChange={(e) =>
-                    setState((prev) => ({ ...prev, sortBy: e.target.value }))
-                  }
-                  className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  aria-label="Sort products"
-                >
-                  <option value="featured">Featured</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="rating">Customer Rating</option>
-                </select>
-              </div>
-            </motion.div>
-
-            <ProductGrid />
-          </div>
-        </div>
+    <div className="flex flex-col min-h-screen relative">
+      {/* Watermark background */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
+        <img
+          src="/pic/em.jpg"
+          alt="Watermark"
+          className="w-full h-full object-cover opacity-10 mix-blend-multiply"
+          style={{ filter: "blur(1px)" }}
+        />
       </div>
-
-      {/* Featured Shops Section */}
-      <div className="bg-amber-50 py-12 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-center mb-8">
-            Featured Shops
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              "Maya Crafts",
-              "Achaar Masters",
-              "Eco Designs",
-              "Silver Artisans",
-            ].map((artisan, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-4 shadow-sm text-center"
-              >
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-amber-200">
-                  <img
-                    src={`https://media.istockphoto.com/id/871957726/photo/senior-craftsman.jpg?s=612x612&w=0&k=20&c=i7DtAA0cvU5PID2tak5X7qU7uGWB0WtG3p0sH7Q1CHI=`}
-                    alt={artisan}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="font-medium text-lg">{artisan}</h3>
-                <p className="text-gray-500 text-sm mb-4">Master Artisan</p>
-                <button className="text-amber-600 hover:text-amber-700 text-sm font-medium">
-                  View Store →
-                </button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {state.mobileFiltersOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/60 md:hidden"
+      <div className="relative z-10">
+        <Navbar />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-25">
+          <button
             onClick={() =>
-              setState((prev) => ({ ...prev, mobileFiltersOpen: false }))
+              setState((prev) => ({ ...prev, mobileFiltersOpen: true }))
             }
+            className="md:hidden w-full mb-6 flex items-center justify-center gap-2 py-2.5 px-4 bg-white shadow-sm rounded-lg hover:bg-gray-50 transition-colors"
+            aria-label="Open filters"
           >
+            <Filter size={18} className="text-amber-600" />
+            <span className="font-medium">Filter Products</span>
+          </button>
+
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="hidden md:block w-full md:w-80">
+              <FilterSection />
+            </div>
+
+            <div className="flex-1">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-xl shadow-sm mb-6"
+              >
+                <p className="text-gray-600 mb-3 sm:mb-0">
+                  <span className="font-medium">
+                    {state.filteredProducts.length}
+                  </span>{" "}
+                  products
+                  {state.selectedCategory !== "all" && (
+                    <span>
+                      {" "}
+                      in{" "}
+                      <span className="text-amber-600 font-medium">
+                        {
+                          categories.find(
+                            (c) => c.id === state.selectedCategory
+                          )?.name
+                        }
+                      </span>
+                    </span>
+                  )}
+                </p>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <label className="text-gray-600">Sort by:</label>
+                  <select
+                    value={state.sortBy}
+                    onChange={(e) =>
+                      setState((prev) => ({ ...prev, sortBy: e.target.value }))
+                    }
+                    className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    aria-label="Sort products"
+                  >
+                    <option value="featured">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Customer Rating</option>
+                  </select>
+                  {/* Handicrafts Type Dropdown */}
+                  {state.selectedCategory === "Handicrafts" && (
+                    <>
+                      <label className="text-gray-600 ml-2">
+                        Handicrafts Type:
+                      </label>
+                      <select
+                        className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        value={state.handicraftsType || ""}
+                        onChange={(e) =>
+                          setState((prev) => ({
+                            ...prev,
+                            handicraftsType: e.target.value,
+                            activePage: 1,
+                          }))
+                        }
+                      >
+                        <option value="">All</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Home Décor">Home Décor</option>
+                        <option value="Essentials">Essentials</option>
+                        <option value="Toys">Toys</option>
+                      </select>
+                    </>
+                  )}
+                  {/* Textiles Type Dropdown */}
+                  {state.selectedCategory === "Textiles" && (
+                    <>
+                      <label className="text-gray-600 ml-2">
+                        Textiles Type:
+                      </label>
+                      <select
+                        className="border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                        value={state.textilesType || ""}
+                        onChange={(e) =>
+                          setState((prev) => ({
+                            ...prev,
+                            textilesType: e.target.value,
+                            activePage: 1,
+                          }))
+                        }
+                      >
+                        <option value="">All</option>
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Kids">Kids</option>
+                      </select>
+                    </>
+                  )}
+                </div>
+              </motion.div>
+
+              <ProductGrid />
+            </div>
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {state.mobileFiltersOpen && (
             <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              className="absolute left-0 top-0 h-full w-4/5 max-w-sm bg-white p-4 shadow-xl overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/60 md:hidden"
+              onClick={() =>
+                setState((prev) => ({ ...prev, mobileFiltersOpen: false }))
+              }
             >
-              <FilterSection isMobile />
+              <motion.div
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                className="absolute left-0 top-0 h-full w-4/5 max-w-sm bg-white p-4 shadow-xl overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <FilterSection isMobile />
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+        <Footer />
+      </div>
     </div>
   );
 };

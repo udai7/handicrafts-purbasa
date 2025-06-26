@@ -178,171 +178,183 @@ const ArtisanProfiles = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
+    <div className="flex flex-col min-h-screen relative">
+      {/* Watermark background */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none select-none">
+        <img
+          src="/pic/em.jpg"
+          alt="Watermark"
+          className="w-full h-full object-cover opacity-10 mix-blend-multiply"
+          style={{ filter: "blur(1px)" }}
+        />
+      </div>
+      <div className="relative z-10">
+        <Navbar />
 
-      <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20">
-        {/* Page Header */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            Visit Our Offline Shops
-          </h1>
-          <p className="max-w-3xl mx-auto text-gray-600">
-            Discover talented craftspeople from across India, each bringing
-            generations of tradition and expertise to their handmade creations.
-          </p>
-        </div>
+        <div className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20">
+          {/* Page Header */}
+          <div className="text-center mb-10">
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+              Visit Our Offline Shops
+            </h1>
+            <p className="max-w-3xl mx-auto text-gray-600">
+              Discover talented craftspeople from across India, each bringing
+              generations of tradition and expertise to their handmade
+              creations.
+            </p>
+          </div>
 
-        {/* Search and Filter Section */}
-        <div className="mb-8">
-          <div className="flex flex-col md:flex-row gap-4 items-center mb-4">
-            {/* Search Bar */}
-            <div className="relative flex-grow">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FaSearch className="text-gray-400" />
+          {/* Search and Filter Section */}
+          <div className="mb-8">
+            <div className="flex flex-col md:flex-row gap-4 items-center mb-4">
+              {/* Search Bar */}
+              <div className="relative flex-grow">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FaSearch className="text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search by name, craft, or keywords..."
+                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
               </div>
-              <input
-                type="text"
-                placeholder="Search by name, craft, or keywords..."
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                value={searchTerm}
-                onChange={handleSearchChange}
-              />
-            </div>
 
-            {/* Filter Toggle Button */}
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              <FaFilter className="mr-2" />
-              Filters
-              {(selectedCategory !== "All" || selectedLocation !== "All") && (
-                <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                  Active
-                </span>
-              )}
-            </button>
-
-            {/* Clear Filters */}
-            {(selectedCategory !== "All" ||
-              selectedLocation !== "All" ||
-              searchTerm) && (
+              {/* Filter Toggle Button */}
               <button
-                onClick={clearFilters}
-                className="inline-flex items-center text-sm text-gray-500 hover:text-indigo-600"
+                onClick={() => setShowFilters(!showFilters)}
+                className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
-                <FaTimes className="mr-1" />
-                Clear all
+                <FaFilter className="mr-2" />
+                Filters
+                {(selectedCategory !== "All" || selectedLocation !== "All") && (
+                  <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                    Active
+                  </span>
+                )}
               </button>
-            )}
-          </div>
 
-          {/* Filter Options */}
-          {showFilters && (
-            <div className="bg-gray-50 p-4 rounded-md mb-4 border border-gray-200">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Categories Filter */}
-                <div>
-                  <h3 className="text-sm font-medium text-gray-700 mb-2">
-                    Craft Specialty
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {categories.map((category) => (
-                      <button
-                        key={category}
-                        onClick={() => handleCategoryChange(category)}
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          selectedCategory === category
-                            ? "bg-indigo-600 text-white"
-                            : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
-                        }`}
-                      >
-                        {category}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Locations Filter */}
-                <div>
-                  <h3 className="text-sm font-medium text-gray-700 mb-2">
-                    Location
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {locations.map((location) => (
-                      <button
-                        key={location}
-                        onClick={() => handleLocationChange(location)}
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          selectedLocation === location
-                            ? "bg-indigo-600 text-white"
-                            : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
-                        }`}
-                      >
-                        {location}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Results Count */}
-        <div className="mb-6 flex justify-between items-center">
-          <p className="text-sm text-gray-600">
-            Showing{" "}
-            <span className="font-medium">{filteredArtisans.length}</span>{" "}
-            artisans
-          </p>
-          <div className="text-sm text-gray-600">
-            <span className="font-medium">Sort by:</span>
-            <select className="ml-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-              <option>Featured</option>
-              <option>Highest Rated</option>
-              <option>Most Products</option>
-              <option>A-Z</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Loading State */}
-        {isLoading ? (
-          <div className="flex justify-center items-center py-16">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
-          </div>
-        ) : (
-          <>
-            {/* Artisans Grid */}
-            {filteredArtisans.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {filteredArtisans.map((artisan) => (
-                  <ArtisanCard key={artisan.id} artisan={artisan} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16">
-                <div className="text-gray-400 text-5xl mb-4">🔍</div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  No artisans found
-                </h3>
-                <p className="text-gray-600">
-                  Try adjusting your search or filter criteria.
-                </p>
+              {/* Clear Filters */}
+              {(selectedCategory !== "All" ||
+                selectedLocation !== "All" ||
+                searchTerm) && (
                 <button
                   onClick={clearFilters}
-                  className="mt-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="inline-flex items-center text-sm text-gray-500 hover:text-indigo-600"
                 >
-                  Clear all filters
+                  <FaTimes className="mr-1" />
+                  Clear all
                 </button>
+              )}
+            </div>
+
+            {/* Filter Options */}
+            {showFilters && (
+              <div className="bg-gray-50 p-4 rounded-md mb-4 border border-gray-200">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Categories Filter */}
+                  <div>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">
+                      Craft Specialty
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {categories.map((category) => (
+                        <button
+                          key={category}
+                          onClick={() => handleCategoryChange(category)}
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${
+                            selectedCategory === category
+                              ? "bg-indigo-600 text-white"
+                              : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                          }`}
+                        >
+                          {category}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Locations Filter */}
+                  <div>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">
+                      Location
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {locations.map((location) => (
+                        <button
+                          key={location}
+                          onClick={() => handleLocationChange(location)}
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${
+                            selectedLocation === location
+                              ? "bg-indigo-600 text-white"
+                              : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                          }`}
+                        >
+                          {location}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
-          </>
-        )}
+          </div>
+
+          {/* Results Count */}
+          <div className="mb-6 flex justify-between items-center">
+            <p className="text-sm text-gray-600">
+              Showing{" "}
+              <span className="font-medium">{filteredArtisans.length}</span>{" "}
+              artisans
+            </p>
+            <div className="text-sm text-gray-600">
+              <span className="font-medium">Sort by:</span>
+              <select className="ml-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <option>Featured</option>
+                <option>Highest Rated</option>
+                <option>Most Products</option>
+                <option>A-Z</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Loading State */}
+          {isLoading ? (
+            <div className="flex justify-center items-center py-16">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+            </div>
+          ) : (
+            <>
+              {/* Artisans Grid */}
+              {filteredArtisans.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {filteredArtisans.map((artisan) => (
+                    <ArtisanCard key={artisan.id} artisan={artisan} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-16">
+                  <div className="text-gray-400 text-5xl mb-4">🔍</div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    No artisans found
+                  </h3>
+                  <p className="text-gray-600">
+                    Try adjusting your search or filter criteria.
+                  </p>
+                  <button
+                    onClick={clearFilters}
+                    className="mt-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Clear all filters
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };
