@@ -224,8 +224,7 @@ const Bamboo = () => {
                 product={{
                   id: 1,
                   title: "Bamboo Pen Stand",
-                  image:
-                    "/public/bp.webp",
+                  image: "/bp.webp",
                   price: 45.99,
                   rating: 4.0,
                   featured: true,
@@ -245,8 +244,7 @@ const Bamboo = () => {
                 product={{
                   id: 2,
                   title: "Bamboo Lamp",
-                  image:
-                    "/public/bamboo1 (1).webp",
+                  image: "/bamboo1 (1).webp",
                   price: 89.99,
                   rating: 4.0,
                   featured: false,
@@ -266,8 +264,7 @@ const Bamboo = () => {
                 product={{
                   id: 3,
                   title: "Bamboo Basket",
-                  image:
-                    "/public/bamboo1 (2).jpg",
+                  image: "/bamboo1 (2).jpg",
                   price: 35.5,
                   rating: 4.0,
                   featured: false,
@@ -287,8 +284,7 @@ const Bamboo = () => {
                 product={{
                   id: 4,
                   title: "Bamboo Chair",
-                  image:
-                    "/public/w2.jpeg",
+                  image: "/w2.jpeg",
                   price: 29.99,
                   rating: 5.0,
                   featured: false,

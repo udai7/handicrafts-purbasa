@@ -215,7 +215,7 @@ const Textiles = () => {
                 product={{
                   id: 1,
                   title: "Cotton Saree",
-                  image: "/public/cc.webp",
+                  image: "/cc.webp",
                   price: 45.99,
                   rating: 4.0,
                   featured: true,
@@ -235,7 +235,7 @@ const Textiles = () => {
                 product={{
                   id: 2,
                   title: "Silk Shawl",
-                  image: "/public/sw.jpg",
+                  image: "/sw.jpg",
                   price: 89.99,
                   rating: 4.0,
                   featured: false,
@@ -255,7 +255,7 @@ const Textiles = () => {
                 product={{
                   id: 3,
                   title: "Cotton Scarf",
-                  image: "/public/ww.webp",
+                  image: "/ww.webp",
                   price: 35.5,
                   rating: 4.0,
                   featured: false,
@@ -275,7 +275,7 @@ const Textiles = () => {
                 product={{
                   id: 4,
                   title: "Handloom Fabric",
-                  image: "/public/Textiles.jpg",
+                  image: "/Textiles.jpg",
                   price: 29.99,
                   rating: 5.0,
                   featured: false,

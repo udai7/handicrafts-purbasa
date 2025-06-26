@@ -7,7 +7,7 @@ const mockOrders = [
   {
     id: 1,
     name: "Wooden Water Bottle",
-    image: "/public/pic/2.jpg",
+    image: "/pic/2.jpg",
     price: 29.99,
     rating: 4.7,
     reviewCount: 32,
@@ -18,7 +18,7 @@ const mockOrders = [
   {
     id: 2,
     name: "Bamboo Necklace and Earrings",
-    image: "/public/pic/6.jpg",
+    image: "/pic/6.jpg",
     price: 24.99,
     rating: 4.8,
     reviewCount: 17,
@@ -29,7 +29,7 @@ const mockOrders = [
   {
     id: 3,
     name: "Wooden Necklace and Earrings",
-    image: "/public/pic/5.jpg",
+    image: "/pic/5.jpg",
     price: 14.99,
     rating: 4.5,
     reviewCount: 21,
@@ -45,7 +45,7 @@ export default function MyProfile() {
     email: "john@example.com",
     address: "123 Main St, City, Country",
     contact: "+1234567890",
-    profilePic: "/public/pic/nigga.jpg",
+    profilePic: "/pic/nigga.jpg",
     bio: "Craft lover, supporting artisans and handmade treasures!",
   });
   const [editMode, setEditMode] = useState(false);

@@ -8,7 +8,7 @@ const MOCK_CART_ITEMS = [
   {
     id: "1",
     name: "Bamboo candle Stand",
-    image: "/public/bp2.webp",
+    image: "/bp2.webp",
     price: 49.99,
     quantity: 2,
     artisan: "Asha Achaar",
@@ -16,7 +16,7 @@ const MOCK_CART_ITEMS = [
   {
     id: "2",
     name: "Bamboo Pen Stand",
-    image: "/public/bp.webp",
+    image: "/bp.webp",
     price: 29.99,
     quantity: 1,
     artisan: "Bamboo Crafts Co.",
@@ -24,7 +24,7 @@ const MOCK_CART_ITEMS = [
   {
     id: "3",
     name: "Cotton Saree",
-    image: "/public/cc.webp",
+    image: "/cc.webp",
     price: 39.99,
     quantity: 3,
     artisan: "Textile Weavers",
@@ -32,7 +32,7 @@ const MOCK_CART_ITEMS = [
   {
     id: "4",
     name: "Necklace and Earring Set",
-    image: "/public/j4.jpg",
+    image: "/j4.jpg",
     price: 59.99,
     quantity: 1,
     artisan: "Jewelry Artisans",

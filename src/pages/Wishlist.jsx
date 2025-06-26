@@ -15,7 +15,7 @@ const MOCK_PRODUCTS = [
   {
     productId: "1",
     title: "Wooden Water Bottle",
-    image: "/public/pic/2.jpg",
+    image: "/pic/2.jpg",
     price: 29.99,
     rating: 4.7,
     featured: true,
@@ -24,7 +24,7 @@ const MOCK_PRODUCTS = [
   {
     productId: "4",
     title: "Bamboo Necklace and Earrings",
-    image: "/public/pic/6.jpg",
+    image: "/pic/6.jpg",
     price: 24.99,
     rating: 4.8,
     featured: true,
@@ -33,7 +33,7 @@ const MOCK_PRODUCTS = [
   {
     productId: "5",
     title: "Wooden Necklace and Earrings",
-    image: "/public/pic/5.jpg",
+    image: "/pic/5.jpg",
     price: 14.99,
     rating: 4.5,
     featured: false,
@@ -42,7 +42,7 @@ const MOCK_PRODUCTS = [
   {
     productId: "8",
     title: "Mango Pickle",
-    image: "/public/a4.jpeg",
+    image: "/a4.jpeg",
     price: 59.99,
     rating: 4.7,
     featured: false,
