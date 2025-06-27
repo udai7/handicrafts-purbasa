@@ -11,6 +11,7 @@ import PaymentDetails from "./components/Dashboard/MainContentArea/Payments/Paym
 import ArtisansManagement from "./components/Dashboard/MainContentArea/ArtisansManagement";
 import AddProduct from "./components/Dashboard/MainContentArea/products/add_product";
 import ProductList from "./components/Dashboard/MainContentArea/products/your_products";
+import Reviews from "./components/Dashboard/MainContentArea/products/reviews";
 
 const App2 = () => {
   return (
@@ -27,6 +28,7 @@ const App2 = () => {
         <Route path="artisans" element={<ArtisansManagement />} />
         <Route path="add" element={<AddProduct />} />
         <Route path="products" element={<ProductList />} />
+        <Route path="reviews" element={<Reviews />} />
       </Route>
       {/* Redirect unknown admin routes to dashboard */}
       <Route

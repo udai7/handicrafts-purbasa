@@ -207,6 +207,9 @@ const OrdersList = () => {
     (order) => order.status === "Completed"
   ).length;
 
+  // Helper to format INR currency
+  const formatINR = (amount) => `₹${amount.toLocaleString("en-IN")}`;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -234,53 +237,55 @@ const OrdersList = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-blue-100 p-4 rounded-lg shadow-sm border border-gray-100">
           <div className="flex items-center">
-            <div className="p-2 bg-indigo-100 rounded-lg">
-              <Package size={20} className="text-indigo-600" />
+            <div className="p-2 bg-blue-200 rounded-lg">
+              <Package size={20} className="text-blue-700" />
             </div>
             <div className="ml-3">
-              <p className="text-sm font-medium text-gray-500">Total Orders</p>
-              <p className="text-xl font-bold text-gray-800">{totalOrders}</p>
+              <p className="text-sm font-medium text-blue-800">Total Orders</p>
+              <p className="text-xl font-bold text-blue-900">{totalOrders}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-green-100 p-4 rounded-lg shadow-sm border border-gray-100">
           <div className="flex items-center">
-            <div className="p-2 bg-green-100 rounded-lg">
-              <CheckCircle size={20} className="text-green-600" />
+            <div className="p-2 bg-green-200 rounded-lg">
+              <CheckCircle size={20} className="text-green-700" />
             </div>
             <div className="ml-3">
-              <p className="text-sm font-medium text-gray-500">Completed</p>
-              <p className="text-xl font-bold text-gray-800">
+              <p className="text-sm font-medium text-green-800">Completed</p>
+              <p className="text-xl font-bold text-green-900">
                 {completedOrders}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-yellow-100 p-4 rounded-lg shadow-sm border border-gray-100">
           <div className="flex items-center">
-            <div className="p-2 bg-yellow-100 rounded-lg">
-              <Clock size={20} className="text-yellow-600" />
+            <div className="p-2 bg-yellow-200 rounded-lg">
+              <Clock size={20} className="text-yellow-700" />
             </div>
             <div className="ml-3">
-              <p className="text-sm font-medium text-gray-500">Pending</p>
-              <p className="text-xl font-bold text-gray-800">{pendingOrders}</p>
+              <p className="text-sm font-medium text-yellow-800">Pending</p>
+              <p className="text-xl font-bold text-yellow-900">
+                {pendingOrders}
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-red-100 p-4 rounded-lg shadow-sm border border-gray-100">
           <div className="flex items-center">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <div className="text-blue-600">$</div>
+            <div className="p-2 bg-red-200 rounded-lg">
+              <div className="text-red-700">₹</div>
             </div>
             <div className="ml-3">
-              <p className="text-sm font-medium text-gray-500">Total Revenue</p>
-              <p className="text-xl font-bold text-gray-800">
-                ${totalAmount.toFixed(2)}
+              <p className="text-sm font-medium text-red-800">Total Revenue</p>
+              <p className="text-xl font-bold text-red-900">
+                {formatINR(totalAmount)}
               </p>
             </div>
           </div>

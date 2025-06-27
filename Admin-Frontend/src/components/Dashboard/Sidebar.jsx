@@ -9,6 +9,7 @@ import {
   Users,
   Plus,
   LogOut,
+  Tag,
 } from "lucide-react";
 import { AdminContext } from "../../utils/admin_context";
 import { useContext } from "react";
@@ -50,6 +51,11 @@ const Sidebar = () => {
       name: "Products",
       icon: <Package size={20} />,
       path: "/admin-panel/dashboard/products",
+    },
+    {
+      name: "Reviews",
+      icon: <Tag size={20} />,
+      path: "/admin-panel/dashboard/reviews",
     },
   ];
   const link = import.meta.env.VITE_BACKEND_LINK;
