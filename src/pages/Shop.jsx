@@ -149,6 +149,28 @@ const DUMMY_PRODUCTS = [
     rating: 4.7,
     featured: false,
   },
+  {
+    _id: "10",
+    title: "Wooden Furniture",
+    price: 299.99,
+    artisan: "Suresh Chandra",
+    category: "Handicrafts",
+    subcategory: "Furniture",
+    image: "/pic/4.jpg",
+    rating: 4.8,
+    featured: true,
+  },
+  {
+    _id: "11",
+    title: "Wooden Statue",
+    price: 149.99,
+    artisan: "Meena Devi",
+    category: "Handicrafts",
+    subcategory: "Home Décor",
+    image: "/pic/hd2.jpg",
+    rating: 4.9,
+    featured: true,
+  },
   // Add more dummy products as needed
 ];
 
