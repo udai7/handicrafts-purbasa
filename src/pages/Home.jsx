@@ -16,7 +16,8 @@ const Home = () => {
       id: "1",
       name: "Purbasha Agartala",
       image: "Purbasha2.jpg",
-      location: "Agartala",
+      location:
+        "Purbasha, Tripura Handicrafts, Palace Compound, Agartala, Tripura 799001",
       rating: 4.8,
       reviewCount: 127,
       specialty: "Block Printing",
@@ -29,7 +30,8 @@ const Home = () => {
       id: "2",
       name: "Purbasha Mumbai",
       image: "Purbasha3.jpg",
-      location: "Mumbai",
+      location:
+        "Purbasha, Tripura Bhawan, Vashi, Navi Mumbai, Maharashtra 400703",
       rating: 4.6,
       reviewCount: 89,
       specialty: "Silk Handicrafts",
@@ -42,7 +44,8 @@ const Home = () => {
       id: "3",
       name: "Purbasha Kolkata",
       image: "Purbasha4.jpg",
-      location: "Kolkata",
+      location:
+        "Purbasha Tripura Govt, Middleton Row, Park Street, Kolkata, West Bengal 700071",
       rating: 4.9,
       reviewCount: 143,
       specialty: "Embroidery",
@@ -55,7 +58,8 @@ const Home = () => {
       id: "4",
       name: "Purbasha Bangalore",
       image: "Purbasha5.jpg",
-      location: "Bangalore",
+      location:
+        "Purbasha, Tripura Bhawan, 17, KHB Colony, 5th Block, Koramangala, Bengaluru",
       rating: 4.7,
       reviewCount: 76,
       specialty: "Pickle",
@@ -92,36 +96,47 @@ const Home = () => {
       </div>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-gradient-to-b from-amber-50 to-white">
-        <div className="container mx-auto px-4 max-w-5xl text-center">
+      <section className="py-16 bg-white relative overflow-hidden">
+        {/* Watermark background for desktop only */}
+        <img
+          src="/pic/em.jpg"
+          alt="Watermark"
+          className="hidden md:block pointer-events-none select-none absolute inset-0 w-full h-full object-cover opacity-10 z-0"
+          style={{
+            backgroundImage: "url(/pic/em.jpg)",
+            backgroundRepeat: "repeat",
+            backgroundSize: "200px 200px",
+            zIndex: 0,
+          }}
+        />
+        <div className="relative z-10 container mx-auto px-4 max-w-5xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Why Choose Us?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
             <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center hover:shadow-amber-200 transition-shadow">
               <span className="text-amber-500 text-4xl mb-4">🌍</span>
-              <h3 className="font-semibold text-lg mb-2">Ethically Sourced</h3>
+              <h3 className="font-semibold text-lg mb-2">Unique Products</h3>
               <p className="text-gray-600">
-                We partner directly with artisans, ensuring fair wages and
-                sustainable practices for every product.
+                Discover one-of-a-kind pieces crafted with care and cultural
+                authenticity. Each product reflects the artisan’s unique touch
+                and story.
               </p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center hover:shadow-amber-200 transition-shadow">
-              <span className="text-amber-500 text-4xl mb-4">🎨</span>
-              <h3 className="font-semibold text-lg mb-2">
-                Unique Craftsmanship
-              </h3>
+              <span className="text-amber-500 text-4xl mb-4">🌿</span>
+              <h3 className="font-semibold text-lg mb-2">Eco Friendly</h3>
               <p className="text-gray-600">
-                Every item is handmade, celebrating tradition, creativity, and
-                the story of its maker.
+                Our handmade items are created using sustainable materials and
+                methods, helping you make mindful choices for the planet.
               </p>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center hover:shadow-amber-200 transition-shadow">
-              <span className="text-amber-500 text-4xl mb-4">💎</span>
-              <h3 className="font-semibold text-lg mb-2">Quality Guaranteed</h3>
+              <span className="text-amber-500 text-4xl mb-4">🚚</span>
+              <h3 className="font-semibold text-lg mb-2">Quick Delivery</h3>
               <p className="text-gray-600">
-                We carefully curate and inspect each product to ensure you
-                receive only the best in quality and design.
+                Enjoy fast, reliable shipping on every order—because exceptional
+                craftsmanship shouldn’t keep you waiting.
               </p>
             </div>
           </div>
@@ -134,13 +149,27 @@ const Home = () => {
       </div>
 
       {/* FAQ Section */}
-      <FAQSection />
+      <div className="scroll-mt-16" id="faq">
+        <FAQSection />
+      </div>
 
-      {/* Collection of stores Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+      {/* Explore More Stores Section */}
+      <section className="py-16 bg-white relative overflow-hidden">
+        {/* Watermark background for desktop only */}
+        <img
+          src="/pic/em.jpg"
+          alt="Watermark"
+          className="hidden md:block pointer-events-none select-none absolute inset-0 w-full h-full object-cover opacity-10 z-0"
+          style={{
+            backgroundImage: "url(/pic/em.jpg)",
+            backgroundRepeat: "repeat",
+            backgroundSize: "200px 200px",
+            zIndex: 0,
+          }}
+        />
+        <div className="relative z-10 container mx-auto px-4 max-w-7xl">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-10">
-            Collection of stores
+            Explore More Stores
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {artisanData.map((artisan, idx) => (
@@ -211,7 +240,7 @@ const FAQSection = () => {
     {
       question: "How are your products sourced?",
       answer:
-        "All our products are ethically sourced directly from skilled artisans across Tripura and other parts of Northeast India. We work closely with Self-Help Groups (SHGs), tribal cooperatives, and independent craftsmen to ensure each product reflects authentic craftsmanship and traditional techniques. Our sourcing model not only preserves cultural heritage but also empowers rural communities by providing sustainable livelihoods.",
+        "All our products are Unique Products directly from skilled artisans across Tripura and other parts of Northeast India. We work closely with Self-Help Groups (SHGs), tribal cooperatives, and independent craftsmen to ensure each product reflects authentic craftsmanship and traditional techniques. Our sourcing model not only preserves cultural heritage but also empowers rural communities by providing sustainable livelihoods.",
     },
     {
       question: "Do you ship internationally?",
@@ -239,8 +268,20 @@ const FAQSection = () => {
   const toggle = (idx) => setOpenIndex(openIndex === idx ? null : idx);
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-amber-50">
-      <div className="container mx-auto px-4 max-w-5xl">
+    <section className="py-16 bg-white relative overflow-hidden">
+      {/* Watermark background for desktop only */}
+      <img
+        src="/pic/em.jpg"
+        alt="Watermark"
+        className="hidden md:block pointer-events-none select-none absolute inset-0 w-full h-full object-cover opacity-10 z-0"
+        style={{
+          backgroundImage: "url(/pic/em.jpg)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "200px 200px",
+          zIndex: 0,
+        }}
+      />
+      <div className="relative z-10 container mx-auto px-4 max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
           Frequently Asked Questions
         </h2>
@@ -350,7 +391,7 @@ function FeaturedProductsSection() {
     },
     {
       id: 3,
-      name: "Landloom Saree",
+      name: "Handloom Saree",
       price: 35.5,
       image: "/pic/12.webp",
       rating: 4.7,
@@ -372,7 +413,7 @@ function FeaturedProductsSection() {
   return (
     <FeaturedProducts
       heading="Best Deal of the Day"
-      subheading="Handcrafted With Love"
+      subheading=""
       description="Unique treasures handpicked from our most talented artisans, each telling a story of tradition and craftsmanship."
       buttonText="View All Products"
       products={products}
@@ -427,7 +468,7 @@ function NewArrivalsSection() {
   return (
     <FeaturedProducts
       heading="New Arrivals"
-      subheading="Just In"
+      subheading=""
       description="Discover the latest additions to our artisan collection, fresh from the hands of our talented creators."
       buttonText="View All New Arrivals"
       products={products}
@@ -482,7 +523,7 @@ function FlagshipItemsSection() {
   return (
     <FeaturedProducts
       heading="Flagship Items"
-      subheading="Signature Picks"
+      subheading=""
       description="Explore our most iconic and celebrated artisan creations, loved by our community."
       buttonText="View Flagship Items"
       products={products}

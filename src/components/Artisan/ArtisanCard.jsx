@@ -45,53 +45,23 @@ const ArtisanCard = ({ artisan, highlighted }) => {
           highlighted ? "ring-4 ring-blue-200 ring-inset scale-105 z-20" : ""
         }`}
       >
-        {/* Featured badge */}
-        {featured && (
-          <div className="absolute top-4 left-4 z-10 bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full border border-amber-300">
-            Featured Shop
-          </div>
-        )}
-
-        {/* Wishlist button */}
-        <button className="absolute top-4 right-4 z-10 text-gray-200 hover:text-red-500 transition-colors duration-300">
-          <FaHeart className="text-xl" />
-        </button>
-
         {/* Artisan image with gradient overlay */}
         <div className="relative h-48">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60"></div>
           <img src={image} alt={name} className="w-full h-48 object-cover" />
-          <div className="absolute bottom-3 left-4 text-white">
-            <div className="flex items-center space-x-1">
-              <FaMapMarkerAlt className="text-sm text-red-400" />
-              <span className="text-xs">{location}</span>
-            </div>
-          </div>
         </div>
 
         {/* Content */}
         <div className="p-5">
-          <div className="flex justify-between items-start mb-2">
+          <div className="mb-2">
             <h3 className="font-semibold text-lg text-gray-800">{name}</h3>
-            <div className="flex items-center">
-              <FaStar className="text-yellow-400 mr-1" />
-              <span className="text-sm font-medium">{rating}</span>
-              <span className="text-xs text-gray-500 ml-1">
-                ({reviewCount})
-              </span>
-            </div>
           </div>
 
           <div className="mb-3">
-            <span className="inline-block bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-md">
-              {specialty}
-            </span>
-            <span className="inline-block ml-2 text-xs text-gray-500">
-              {productCount} products
+            <span className="inline-flex items-center text-xs text-gray-700">
+              <FaMapMarkerAlt className="mr-2 text-red-400" size={18} />
+              {location}
             </span>
           </div>
-
-          <p className="text-sm text-gray-600 mb-4 line-clamp-2">{shortBio}</p>
 
           <a
             href={googleMapsUrl}

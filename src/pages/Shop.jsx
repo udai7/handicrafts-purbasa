@@ -47,6 +47,7 @@ const categories = [
   { id: "all", name: "All Categories", icon: <ShoppingBag size={16} /> },
   { id: "Handicrafts", name: "Handicrafts", icon: <Scissors size={16} /> },
   { id: "Jewelry", name: "Jewelry", icon: <Diamond size={16} /> },
+  { id: "Furniture", name: "Furniture", icon: <Gift size={16} /> },
   { id: "Textiles", name: "Textiles", icon: <Shirt size={16} /> },
   { id: "Achaar", name: "Pickle", icon: <Combine size={16} /> },
 ];
@@ -154,7 +155,7 @@ const DUMMY_PRODUCTS = [
     title: "Wooden Furniture",
     price: 299.99,
     artisan: "Suresh Chandra",
-    category: "Handicrafts",
+    category: "Furniture",
     subcategory: "Furniture",
     image: "/pic/4.jpg",
     rating: 4.8,
@@ -702,7 +703,6 @@ const Shop = () => {
                         }
                       >
                         <option value="">All</option>
-                        <option value="Furniture">Furniture</option>
                         <option value="Home Décor">Home Décor</option>
                         <option value="Essentials">Essentials</option>
                         <option value="Toys">Toys</option>

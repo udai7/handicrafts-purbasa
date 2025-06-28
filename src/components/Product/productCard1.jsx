@@ -14,7 +14,6 @@ import { addToCart } from "../../utils/Cart";
 
 const ProductCard = memo(({ product }) => {
   const { user } = useContext(UserContext);
-  const [hovered, setHovered] = useState(false);
   const [isfav, setIsFav] = useState(false);
   const navigate = useNavigate();
 
@@ -79,8 +78,6 @@ const ProductCard = memo(({ product }) => {
   return (
     <div
       className="group relative rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       onClick={handleProductClick}
     >
       {/* Product Image */}
@@ -97,29 +94,6 @@ const ProductCard = memo(({ product }) => {
             Featured
           </span>
         )}
-
-        {/* Hover Overlay */}
-        <div
-          className={`absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center transition-opacity duration-300 ${
-            hovered ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <div className="flex space-x-4">
-            <button
-              onClick={handleAddToCart}
-              className="bg-white text-amber-600 hover:bg-amber-50 p-3 rounded-full shadow-md transition-all transform hover:scale-110"
-              title="Add to Cart"
-            >
-              <ShoppingCart size={20} />
-            </button>
-            <button
-              onClick={handleProductClick}
-              className="bg-white text-amber-600 hover:bg-amber-50 px-4 py-2 rounded-lg font-medium text-sm shadow-md transition-all transform hover:scale-105"
-            >
-              View Details
-            </button>
-          </div>
-        </div>
 
         {/* Wishlist Toggle */}
         <button

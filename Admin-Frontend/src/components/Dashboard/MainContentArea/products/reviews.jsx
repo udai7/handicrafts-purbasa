@@ -22,7 +22,7 @@ const mockReviews = [
   },
   {
     id: "3",
-    product: "Landloom Saree",
+    product: "Handloom Saree",
     buyer: "Rahul Verma",
     rating: 3,
     comment: "Good, but expected better packaging.",

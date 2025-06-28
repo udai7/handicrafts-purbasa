@@ -4,35 +4,27 @@ import ProductCard from "../Product/ProductCard";
 
 const FeaturedProducts = ({
   heading = "Best Deal of the Day",
-  subheading = "Handcrafted With Love",
+  subheading = "",
   description = "Unique treasures handpicked from our most talented artisans, each telling a story of tradition and craftsmanship.",
   buttonText = "View All Products",
   products = [],
   gridClass = "grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8",
   showStrikethrough = true,
 }) => {
-  const [hoveredProduct, setHoveredProduct] = useState(null);
-
   // Enhanced ProductCard component with more features
   const EnhancedProductCard = ({ product }) => {
-    const isHovered = hoveredProduct === product.id;
-
     // Calculate previous price if not provided
     const previousPrice =
       product.previousPrice || (product.price * 1.2).toFixed(2);
 
     return (
-      <div
-        className="flex flex-col h-full bg-white rounded-xl shadow-lg overflow-hidden"
-        onMouseEnter={() => setHoveredProduct(product.id)}
-        onMouseLeave={() => setHoveredProduct(null)}
-      >
+      <div className="flex flex-col h-full bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Product Image with Badge */}
         <div className="relative overflow-hidden aspect-square">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-700 ease-in-out transform group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"
           />
 
           {/* Badge */}
@@ -41,43 +33,6 @@ const FeaturedProducts = ({
               {product.badge}
             </div>
           )}
-
-          {/* Quick actions overlay - appears on hover */}
-          <div
-            className={`absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-3 transition-opacity duration-300 ${
-              isHovered ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <button className="bg-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-500 hover:text-white transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                <path
-                  fillRule="evenodd"
-                  d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-            <button className="bg-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-amber-500 hover:text-white transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
         </div>
 
         {/* Product Info */}
@@ -120,9 +75,9 @@ const FeaturedProducts = ({
           <div className="mt-auto flex items-center justify-between w-full">
             <div className="flex flex-col items-start">
               {showStrikethrough && (
-              <span className="text-gray-500 line-through mr-2">
-                ₹{(previousPrice * 83).toLocaleString()}
-              </span>
+                <span className="text-gray-500 line-through mr-2">
+                  ₹{(previousPrice * 83).toLocaleString()}
+                </span>
               )}
               <span className="text-lg font-bold text-amber-600">
                 ₹{(product.price * 83).toLocaleString()}
@@ -146,8 +101,20 @@ const FeaturedProducts = ({
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-amber-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-white relative overflow-hidden">
+      {/* Watermark background for desktop only */}
+      <img
+        src="/pic/em.jpg"
+        alt="Watermark"
+        className="hidden md:block pointer-events-none select-none absolute inset-0 w-full h-full object-cover opacity-10 z-0"
+        style={{
+          backgroundImage: "url(/pic/em.jpg)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "200px 200px",
+          zIndex: 0,
+        }}
+      />
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with decorative elements */}
         <div className="relative mb-16">
           <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-amber-200 opacity-20 text-9xl font-serif z-0">

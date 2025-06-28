@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const coverImages = [
-  "/pic/cover%20pic.jpg",
-  "/pic/cover%20pic%202.jpg",
-  "/pic/cover%20pic%203.jpg",
-];
+const coverImages = ["/pic/c1.jpeg", "/pic/c2.jpg", "/pic/cover%20pic%203.jpg"];
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  const [animateKey, setAnimateKey] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % coverImages.length);
+      setCurrentImage((prev) => {
+        const next = (prev + 1) % coverImages.length;
+        setAnimateKey((k) => k + 1); // trigger animation
+        return next;
+      });
     }, 4000); // Change image every 4 seconds
     return () => clearInterval(interval);
   }, []);
@@ -22,14 +23,24 @@ const HeroSection = () => {
     <section
       className="relative min-h-[100vh] flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: `url(${coverImages[currentImage]})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        transition: "background-image 1s ease-in-out",
+        background: "black",
       }}
     >
+      {/* Animated background image with stretch effect */}
+      <motion.div
+        key={animateKey}
+        initial={{ scale: 1.1, opacity: 0.7 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+        className="absolute inset-0 w-full h-full z-0"
+        style={{
+          backgroundImage: `url(${coverImages[currentImage]})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
       {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/40 z-10"></div>
 
       {/* Decorative Elements - Reduced number and simplified */}
       <div className="absolute top-1/4 left-10 w-32 h-32 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -64,7 +75,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Threads & Treasures from the Hills.
+          Threads & Treasures from the Hills
         </motion.p>
 
         {/* Buttons with Animations */}

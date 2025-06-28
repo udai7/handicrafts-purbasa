@@ -149,7 +149,7 @@ const Navbar = () => {
               Purba<span className="text-amber-600">sha</span>
             </span>
             <span className="hidden sm:block text-xs text-gray-500 -mt-1">
-              Handcrafted with love
+              Govt. of Tripura Undertaking
             </span>
           </div>
         </Link>

@@ -83,20 +83,13 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-600 mb-6">
-              Connecting artisans with customers worldwide, preserving
-              traditional crafts while creating sustainable livelihoods.
+              {/* Tagline removed as requested */}
             </p>
 
             <div className="space-y-3">
               <div className="flex items-start">
                 <MapPin size={18} className="text-amber-600 mt-1 mr-2" />
-                <span className="text-gray-600 text-sm">
-                  123 Artisan Street, Craft City, AC 12345
-                </span>
-              </div>
-              <div className="flex items-center">
-                <Phone size={18} className="text-amber-600 mr-2" />
-                <span className="text-gray-600 text-sm">+1 (555) 123-4567</span>
+                <span className="text-gray-600 text-sm">Agartala,Tripura</span>
               </div>
               <div className="flex items-center">
                 <Mail size={18} className="text-amber-600 mr-2" />

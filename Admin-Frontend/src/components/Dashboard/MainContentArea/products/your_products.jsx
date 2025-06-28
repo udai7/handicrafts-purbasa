@@ -146,7 +146,7 @@ const ProductList = () => {
     },
     {
       _id: "3",
-      title: "Landloom Saree",
+      title: "Handloom Saree",
       image: "/pic/12.webp",
       price: 35.5,
       totalStock: 8,

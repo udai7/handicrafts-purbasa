@@ -88,33 +88,80 @@ const Overview = () => {
 
   const COLORS = ["#6366F1", "#F59E42", "#10B981", "#F43F5E"];
 
-  // Stats cards data with growth indicators
+  // Per-category mock stats
+  const categoryStats = {
+    Handicrafts: {
+      totalOrders: 1234,
+      completedDeliveries: 1000,
+      totalRevenue: 4100000,
+      activeProducts: 150,
+      growthOrders: 8.2,
+      growthDeliveries: 3.5,
+      growthRevenue: 5.7,
+      growthProducts: 2.1,
+    },
+    Jewelry: {
+      totalOrders: 890,
+      completedDeliveries: 800,
+      totalRevenue: 2100000,
+      activeProducts: 90,
+      growthOrders: 5.1,
+      growthDeliveries: 2.2,
+      growthRevenue: 4.3,
+      growthProducts: 1.2,
+    },
+    Textiles: {
+      totalOrders: 670,
+      completedDeliveries: 600,
+      totalRevenue: 1500000,
+      activeProducts: 70,
+      growthOrders: 3.8,
+      growthDeliveries: 1.9,
+      growthRevenue: 2.7,
+      growthProducts: 0.8,
+    },
+    Pickle: {
+      totalOrders: 420,
+      completedDeliveries: 390,
+      totalRevenue: 900000,
+      activeProducts: 40,
+      growthOrders: 2.4,
+      growthDeliveries: 1.1,
+      growthRevenue: 1.5,
+      growthProducts: 0.5,
+    },
+  };
+
+  // Dynamic stats cards based on selected category
   const statsCards = [
     {
       title: "Total Orders",
-      value: "1,234",
-      growth: 12.5,
+      value: categoryStats[selectedCategory].totalOrders.toLocaleString(),
+      growth: categoryStats[selectedCategory].growthOrders,
       icon: <Package className="text-blue-700" size={24} />,
       cardColor: "bg-blue-100",
     },
     {
       title: "Completed Deliveries",
-      value: "1,000",
-      growth: 8.2,
+      value:
+        categoryStats[selectedCategory].completedDeliveries.toLocaleString(),
+      growth: categoryStats[selectedCategory].growthDeliveries,
       icon: <Truck className="text-green-700" size={24} />,
       cardColor: "bg-green-100",
     },
     {
       title: "Total Revenue",
-      value: "₹41,00,000",
-      growth: -3.5,
+      value: `₹${categoryStats[
+        selectedCategory
+      ].totalRevenue.toLocaleString()}`,
+      growth: categoryStats[selectedCategory].growthRevenue,
       icon: <CreditCard className="text-red-700" size={24} />,
       cardColor: "bg-red-100",
     },
     {
       title: "Active Products",
-      value: "150",
-      growth: 5.7,
+      value: categoryStats[selectedCategory].activeProducts.toLocaleString(),
+      growth: categoryStats[selectedCategory].growthProducts,
       icon: <Users className="text-yellow-700" size={24} />,
       cardColor: "bg-yellow-100",
     },
@@ -294,6 +341,25 @@ const Overview = () => {
 
       {/* Time period buttons removed as requested */}
 
+      {/* Category Buttons */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        {Object.keys(salesDataByCategory).map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setSelectedCategory(cat)}
+            className={`w-full text-white text-lg font-bold rounded-xl py-8 shadow-md transition-all duration-200 focus:outline-none
+              ${categoryButtonColors[cat]} 
+              ${
+                selectedCategory === cat
+                  ? "ring-4 ring-white scale-105"
+                  : "opacity-90 hover:opacity-100"
+              }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {statsCards.map((card, index) => (
@@ -337,36 +403,8 @@ const Overview = () => {
               <p className="text-3xl font-bold mt-1 text-gray-900">
                 {card.value}
               </p>
-              {card.revenue && (
-                <p className="text-sm text-gray-700 mt-1">
-                  Revenue:{" "}
-                  <span className="font-semibold">
-                    ₹{card.revenue.toLocaleString()}
-                  </span>
-                </p>
-              )}
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* Category Buttons */}
-      <div className="flex justify-center gap-6 my-6">
-        {Object.keys(salesDataByCategory).map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`text-white text-lg font-bold rounded-2xl px-10 py-5 shadow-md transition-all duration-200 focus:outline-none
-              ${categoryButtonColors[cat]} 
-              ${
-                selectedCategory === cat
-                  ? "ring-4 ring-white scale-105"
-                  : "opacity-90 hover:opacity-100"
-              }`}
-            style={{ minWidth: "180px", minHeight: "64px" }}
-          >
-            {cat}
-          </button>
         ))}
       </div>
 

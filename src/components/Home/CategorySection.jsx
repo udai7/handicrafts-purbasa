@@ -209,17 +209,29 @@ const categoryThemes = {
     accentHover: "group-hover:text-violet-700",
     buttonBg: "bg-violet-100 group-hover/btn:bg-violet-600",
   },
-  Achaar: {
+  Furniture: {
+    primaryIcon: <Diamond size={28} />,
+    secondaryIcon: <Crown size={20} />,
+    pattern: "bamboo",
+    color: "#a0522d",
+    bgLight: "bg-yellow-50",
+    bgDark: "bg-yellow-100",
+    accentBg: "bg-yellow-900",
+    accentText: "text-yellow-900",
+    accentHover: "group-hover:text-yellow-800",
+    buttonBg: "bg-yellow-100 group-hover/btn:bg-yellow-900",
+  },
+  Pickle: {
     primaryIcon: <Palette size={28} />,
     secondaryIcon: <Brush size={20} />,
-    pattern: "achaar",
-    color: "#ec4899", // pink-500
-    bgLight: "bg-pink-50",
-    bgDark: "bg-pink-100",
-    accentBg: "bg-pink-500",
-    accentText: "text-pink-600",
-    accentHover: "group-hover:text-pink-700",
-    buttonBg: "bg-pink-100 group-hover/btn:bg-pink-600",
+    pattern: "Achaar",
+    color: "#dc2626",
+    bgLight: "bg-red-50",
+    bgDark: "bg-red-100",
+    accentBg: "bg-red-600",
+    accentText: "text-red-600",
+    accentHover: "group-hover:text-red-700",
+    buttonBg: "bg-red-100 group-hover/btn:bg-red-600",
   },
 };
 
@@ -228,10 +240,15 @@ const CategoryCard = memo(({ category }) => {
   const { name, description, image } = category;
   const theme = categoryThemes[name] || categoryThemes.Handicrafts;
   return (
-    <div className="flex-shrink-0 w-64 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group">
+    <div className="flex-shrink-0 w-64 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group bg-white">
       {/* Top section with full image background */}
       <div className="relative h-40 overflow-hidden">
-        <img src={image} alt={name} className="w-full h-full object-cover" />
+        <img
+          src={image}
+          alt={name}
+          className="w-full h-full object-cover"
+          style={name === "Jewelry" ? { objectPosition: "bottom" } : {}}
+        />
       </div>
       <div className="p-4">
         <div className="flex items-center mb-2">
@@ -271,28 +288,35 @@ const CategorySection = () => {
       name: "Handicrafts",
       description:
         "Traditional handwoven textiles and fabrics crafted with authentic techniques passed down through generations.",
-      image: "/Handicrafts.jpg",
+      image: "/pic/h.jpeg",
     },
     {
       id: 2,
       name: "Jewelry",
       description:
         "Handcrafted ornaments and accessories featuring traditional metalwork, gemstones, and culturally significant designs.",
-      image: "/j1.jpg",
+      image: "/pic/j.jpeg",
+    },
+    {
+      id: 5,
+      name: "Furniture",
+      description:
+        "Beautifully crafted furniture pieces made from sustainable materials, blending tradition with modern design.",
+      image: "/pic/f.jpeg",
     },
     {
       id: 3,
       name: "Textiles",
       description:
         "Exquisite hand-loomed fabrics and garments featuring intricate patterns and natural dyes from regional textile traditions.",
-      image: "/Textiles.jpg",
+      image: "/pic/t.jpeg",
     },
     {
       id: 4,
       name: "Pickle",
       description:
         "Handcrafted ceramic art and functional Achaar shaped with precision and artistic expression by skilled artisans.",
-      image: "/Achaar.jpg",
+      image: "/pic/p.jpg",
     },
   ];
 
@@ -301,8 +325,20 @@ const CategorySection = () => {
   };
 
   return (
-    <section className="py-12 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 bg-white relative overflow-hidden">
+      {/* Watermark background for desktop only */}
+      <img
+        src="/pic/em.jpg"
+        alt="Watermark"
+        className="hidden md:block pointer-events-none select-none absolute inset-0 w-full h-full object-cover opacity-10 z-0"
+        style={{
+          backgroundImage: "url(/pic/em.jpg)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "200px 200px",
+          zIndex: 0,
+        }}
+      />
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center mb-8">
           <div className="flex items-center mb-3">
             <Crown className="text-amber-500 mr-2" size={20} />
@@ -325,7 +361,7 @@ const CategorySection = () => {
 
         {/* Centered grid of categories */}
         <div className="flex justify-center w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {categories.map((category) => (
               <CategoryCard key={category.id} category={category} />
             ))}

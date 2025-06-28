@@ -168,10 +168,36 @@ const About = () => {
         {/* Cover Image at the Top */}
         <div className="relative w-full h-64 md:h-80 z-10">
           <img
-            src="/Purbasha2.jpg"
+            src="/pic/pp.jpg"
             alt="Cover"
             className="w-full h-full object-cover"
           />
+        </div>
+        {/* CM Images Section */}
+        <div className="relative z-10 flex flex-col items-center mt-8 mb-8">
+          <div className="flex flex-col items-center w-full">
+            <div className="flex flex-row justify-center gap-8 mb-2 w-full">
+              {["manik.jpg", "m3.jpeg", "m2.jpeg"].map((img, idx) => {
+                let caption = "Honorable CM Tripura";
+                if (idx === 1) caption = "Honorable Chairman THHCL";
+                if (idx === 2) caption = "Honorable Secretary THHCL";
+                return (
+                  <div key={img} className="flex flex-col items-center">
+                    <div className="w-48 h-48 md:w-56 md:h-56 rounded-xl overflow-hidden border-2 border-gray-200 bg-white flex items-center justify-center">
+                      <img
+                        src={`/pic/${img}`}
+                        alt={caption}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <span className="mt-3 text-lg font-semibold font-cursive text-gray-800">
+                      {caption}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
         {/* Large About Heading */}
         <div className="relative z-10 flex flex-col items-center mt-8 mb-8">
@@ -182,105 +208,116 @@ const About = () => {
             About
           </h1>
         </div>
-        {/* Main Content Layout */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-            {/* Left: Portrait Image */}
-            <div className="flex justify-center md:justify-start mb-8 md:mb-0">
-              <img
-                src="/pic/pp.jpg"
-                alt="Portrait"
-                className="w-80 h-[32rem] object-cover rounded-lg shadow-lg border-2 border-gray-200 bg-white"
-              />
-            </div>
-            {/* Center: All Texts */}
-            <div className="col-span-1 flex flex-col gap-4">
-              <h2
-                className="text-xl font-semibold font-cursive"
-                style={{ fontFamily: "Dancing Script, cursive" }}
-              >
-                Purbasha's History
-              </h2>
-              <p className="text-gray-700">{artisan.bio}</p>
-              <h2
-                className="text-xl font-semibold font-cursive"
-                style={{ fontFamily: "Dancing Script, cursive" }}
-              >
-                Tripura Handloom: A Tapestry of Tradition and Culture
-              </h2>
-              <p className="text-gray-700">
-                Tripura, nestled in the northeast of India, is a land rich in
-                cultural heritage and traditional crafts. Among its many
-                artistic expressions, handloom weaving stands out as a timeless
-                emblem of the state's indigenous identity. Rooted deeply in the
-                customs of the tribal and non-tribal communities of the region,
-                Tripura's handloom sector reflects not only artistic excellence
-                but also a source of livelihood for thousands.
-              </p>
-              <h3
-                className="text-lg font-semibold font-cursive"
-                style={{ fontFamily: "Dancing Script, cursive" }}
-              >
-                A Living Heritage
-              </h3>
-              <p className="text-gray-700">
-                The art of handloom weaving in Tripura has been passed down
-                through generations, especially among the tribal communities
-                such as the Reangs, Lushais, and Tripuris. Each community has
-                developed its unique motifs, patterns, and techniques that are
-                rich in symbolism and tradition. Women, in particular, play a
-                vital role in the weaving process, often using loin looms (also
-                known as backstrap looms) — a portable and indigenous type of
-                loom that gives the weaver complete control over the design and
-                weave.
-              </p>
-              <h3
-                className="text-lg font-semibold font-cursive"
-                style={{ fontFamily: "Dancing Script, cursive" }}
-              >
-                Distinctive Designs and Products
-              </h3>
-              <p className="text-gray-700">
-                Tripura's handloom is known for its vibrant colors, geometrical
-                patterns, and eco-friendly materials. The fabrics often feature
-                traditional designs like rignai, rihamp, and kamchwlwi borok,
-                which hold cultural significance.
-              </p>
-              <p className="text-gray-700">
-                Handloom products from the state include:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700">
-                <li>
-                  Traditional garments like rignai (wraparound skirts), risa
-                  (breast cloth), and rikutu (upper body wrap)
-                </li>
-                <li>Elegant stoles, scarves, shawls, and dupattas</li>
-                <li>
-                  Contemporary home décor items such as cushion covers,
-                  curtains, and table runners
-                </li>
-              </ul>
-            </div>
-            {/* Right: Awards */}
-            <div>
-              <h2 className="text-xl font-semibold mb-4">
-                Awards & Recognition
-              </h2>
-              <div className="space-y-4">
-                {artisan.awards.map((award, index) => (
-                  <div
-                    key={index}
-                    className="border-l-4 border-indigo-500 pl-4 py-2"
-                  >
-                    <div className="font-medium">{award.title}</div>
-                    <div className="text-sm text-gray-600">
-                      {award.organization}, {award.year}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        {/* About Texts Section */}
+        <div className="max-w-4xl mx-auto mb-12 space-y-8">
+          <div>
+            <h2
+              className="text-3xl font-bold text-center mb-4 font-cursive"
+              style={{ fontFamily: "Dancing Script, cursive" }}
+            >
+              Purbasha's History
+            </h2>
+            <p className="text-lg text-center text-gray-700">
+              Purbasha Tripura is the official handicrafts brand of the
+              Government of Tripura, dedicated to preserving and promoting the
+              state's rich artisanal heritage. With a diverse collection that
+              spans handloom textiles, bamboo and cane products, traditional
+              jewelry, and ethnic pickles (achaar), Purbasha represents the
+              heart of Tripura's cultural identity. Every product sold under
+              Purbasha is handcrafted by local artisans, many of whom are part
+              of Self-Help Groups (SHGs) and tribal communities, ensuring both
+              authenticity and social impact. With over 6 stores across India,
+              Purbasha connects artisans to markets while supporting sustainable
+              rural livelihoods.
+            </p>
           </div>
+          <div>
+            <h2
+              className="text-2xl font-bold text-center mb-3 font-cursive"
+              style={{ fontFamily: "Dancing Script, cursive" }}
+            >
+              Tripura Handloom: A Tapestry of Tradition and Culture
+            </h2>
+            <p className="text-base text-center text-gray-700">
+              Tripura, nestled in the northeast of India, is a land rich in
+              cultural heritage and traditional crafts. Among its many artistic
+              expressions, handloom weaving stands out as a timeless emblem of
+              the state's indigenous identity. Rooted deeply in the customs of
+              the tribal and non-tribal communities of the region, Tripura's
+              handloom sector reflects not only artistic excellence but also a
+              source of livelihood for thousands.
+            </p>
+          </div>
+          <div>
+            <h3
+              className="text-xl font-bold text-center mb-2 font-cursive"
+              style={{ fontFamily: "Dancing Script, cursive" }}
+            >
+              A Living Heritage
+            </h3>
+            <p className="text-base text-center text-gray-700">
+              The art of handloom weaving in Tripura has been passed down
+              through generations, especially among the tribal communities such
+              as the Reangs, Lushais, and Tripuris. Each community has developed
+              its unique motifs, patterns, and techniques that are rich in
+              symbolism and tradition. Women, in particular, play a vital role
+              in the weaving process, often using loin looms (also known as
+              backstrap looms) — a portable and indigenous type of loom that
+              gives the weaver complete control over the design and weave.
+            </p>
+          </div>
+          <div>
+            <h3
+              className="text-xl font-bold text-center mb-2 font-cursive"
+              style={{ fontFamily: "Dancing Script, cursive" }}
+            >
+              Distinctive Designs and Products
+            </h3>
+            <p className="text-base text-center text-gray-700 mb-2">
+              Tripura's handloom is known for its vibrant colors, geometrical
+              patterns, and eco-friendly materials. The fabrics often feature
+              traditional designs like rignai, rihamp, and kamchwlwi borok,
+              which hold cultural significance.
+            </p>
+            <p className="text-base text-center text-gray-700 mb-2">
+              Handloom products from the state include:
+            </p>
+            <ul className="list-disc list-inside text-base text-gray-700 mx-auto max-w-lg">
+              <li>
+                Traditional garments like rignai (wraparound skirts), risa
+                (breast cloth), and rikutu (upper body wrap)
+              </li>
+              <li>Elegant stoles, scarves, shawls, and dupattas</li>
+              <li>
+                Contemporary home décor items such as cushion covers, curtains,
+                and table runners
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* Achievements Section */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <h2
+            className="text-3xl font-bold text-center mb-6 font-cursive"
+            style={{ fontFamily: "Dancing Script, cursive" }}
+          >
+            Achievements
+          </h2>
+          <ul className="space-y-4">
+            {artisan.awards.map((award, idx) => (
+              <li
+                key={idx}
+                className="bg-white rounded-lg shadow p-4 flex flex-col md:flex-row md:items-center md:justify-between border border-gray-100"
+              >
+                <span className="font-semibold text-blue-700 text-lg">
+                  {award.title}
+                </span>
+                <span className="text-gray-500 text-sm">
+                  {award.organization} &middot; {award.year}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <Footer />
