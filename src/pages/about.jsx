@@ -166,7 +166,7 @@ const About = () => {
           />
         </div>
         {/* Cover Image at the Top */}
-        <div className="relative w-full h-64 md:h-80 z-10">
+        <div className="relative w-full h-96 md:h-[32rem] z-10">
           <img
             src="/pic/pp.jpg"
             alt="Cover"
@@ -177,22 +177,59 @@ const About = () => {
         <div className="relative z-10 flex flex-col items-center mt-8 mb-8">
           <div className="flex flex-col items-center w-full">
             <div className="flex flex-row justify-center gap-8 mb-2 w-full">
-              {["manik.jpg", "m3.jpeg", "m2.jpeg"].map((img, idx) => {
-                let caption = "Honorable CM Tripura";
-                if (idx === 1) caption = "Honorable Secretary THHCL";
-                if (idx === 2) caption = "Honorable Chairman THHCL";
+              {[
+                {
+                  img: "manik.jpg",
+                  caption: "Honorable CM\nTripura",
+                  cardBg: "bg-amber-50",
+                },
+                {
+                  img: "m2.jpeg",
+                  caption: "Honorable Chairman THHCL",
+                  cardBg: "bg-blue-50",
+                },
+                {
+                  img: "m3.jpeg",
+                  caption: "Honorable Secretary THHCL",
+                  cardBg: "bg-green-50",
+                },
+              ].map((person, idx, arr) => {
+                const order = [0, 1, 2];
+                const personData = arr[order[idx]];
                 return (
-                  <div key={img} className="flex flex-col items-center">
-                    <div className="w-48 h-48 md:w-56 md:h-56 rounded-xl overflow-hidden border-2 border-gray-200 bg-white flex items-center justify-center">
+                  <div
+                    key={personData.img}
+                    className={`flex flex-col ${personData.cardBg} rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 w-72`}
+                  >
+                    {/* Image */}
+                    <div className="relative h-56 w-full overflow-hidden">
                       <img
-                        src={`/pic/${img}`}
-                        alt={caption}
-                        className="w-full h-full object-cover"
+                        src={`/pic/${personData.img}`}
+                        alt={personData.caption.replace(/\n/g, " ")}
+                        className={`w-full h-full object-cover ${
+                          idx === 0 ? "scale-110" : ""
+                        }`}
+                        style={
+                          idx === 0
+                            ? { objectPosition: "center" }
+                            : idx === 2
+                            ? { objectPosition: "center 20%" }
+                            : {}
+                        }
                       />
                     </div>
-                    <span className="mt-3 text-lg font-semibold font-cursive text-gray-800">
-                      {caption}
-                    </span>
+                    {/* Content */}
+                    <div className="p-5 flex flex-col flex-1 justify-between">
+                      <h3
+                        className={`font-bold text-xl mb-2 text-center text-black`}
+                        style={{
+                          fontFamily: "Times New Roman, Times, serif",
+                          whiteSpace: "pre-line",
+                        }}
+                      >
+                        {personData.caption}
+                      </h3>
+                    </div>
                   </div>
                 );
               })}
@@ -296,28 +333,32 @@ const About = () => {
           </div>
         </div>
         {/* Achievements Section */}
-        <div className="max-w-3xl mx-auto mb-16">
+        <div className="max-w-7xl mx-auto mb-16">
           <h2
             className="text-3xl font-bold text-center mb-6 font-cursive"
             style={{ fontFamily: "Dancing Script, cursive" }}
           >
             Achievements
           </h2>
-          <ul className="space-y-4">
-            {artisan.awards.map((award, idx) => (
-              <li
-                key={idx}
-                className="bg-white rounded-lg shadow p-4 flex flex-col md:flex-row md:items-center md:justify-between border border-gray-100"
-              >
-                <span className="font-semibold text-blue-700 text-lg">
-                  {award.title}
-                </span>
-                <span className="text-gray-500 text-sm">
-                  {award.organization} &middot; {award.year}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <div className="bg-white rounded-2xl p-6 shadow-lg overflow-x-auto">
+            <ul className="flex flex-row gap-8 justify-center items-stretch min-w-max">
+              {artisan.awards.map((award, idx) => (
+                <li
+                  key={idx}
+                  className="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-100 min-w-[340px] z-10"
+                  style={{ background: "#fff", zIndex: 10 }}
+                >
+                  <span className="text-4xl mb-3">🏆</span>
+                  <span className="font-semibold text-blue-700 text-lg mb-2">
+                    {award.title}
+                  </span>
+                  <span className="text-gray-500 text-sm">
+                    {award.organization} &middot; {award.year}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <Footer />

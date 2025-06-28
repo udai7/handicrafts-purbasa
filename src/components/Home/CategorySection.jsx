@@ -239,8 +239,17 @@ const categoryThemes = {
 const CategoryCard = memo(({ category }) => {
   const { name, description, image } = category;
   const theme = categoryThemes[name] || categoryThemes.Handicrafts;
+  // Assign light background shade based on category
+  let cardBg = "bg-white";
+  if (name === "Handicrafts") cardBg = "bg-orange-50";
+  else if (name === "Jewelry") cardBg = "bg-purple-50";
+  else if (name === "Furniture") cardBg = "bg-yellow-50";
+  else if (name === "Textiles") cardBg = "bg-indigo-50";
+  else if (name === "Pickle") cardBg = "bg-red-50";
   return (
-    <div className="flex-shrink-0 w-64 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group bg-white">
+    <div
+      className={`flex-shrink-0 w-64 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group ${cardBg}`}
+    >
       {/* Top section with full image background */}
       <div className="relative h-40 overflow-hidden">
         <img
