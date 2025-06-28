@@ -273,7 +273,7 @@ const CategoryCard = memo(({ category }) => {
         </p>
         <div className="flex items-center justify-between w-full group/btn">
           <span
-            className={`text-sm font-medium ${theme.accentText} group-hover:text-white transition-colors`}
+            className={`text-sm font-medium ${theme.accentText} transition-colors`}
           >
             Explore
           </span>

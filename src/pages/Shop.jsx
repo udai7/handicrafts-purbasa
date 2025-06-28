@@ -57,12 +57,12 @@ import Navbar from "../components/Layout/Navbar";
 const DUMMY_PRODUCTS = [
   {
     _id: "1",
-    title: "Wooden Water Bottle",
+    title: "Tripureshwari Temple Model",
     price: 29.99,
     artisan: "Ravi Kumar",
     category: "Handicrafts",
     subcategory: "Essentials",
-    image: "/pic/2.jpg",
+    image: "/pic/tri.jpeg",
     rating: 4.7,
     featured: true,
   },

@@ -180,17 +180,17 @@ const About = () => {
               {[
                 {
                   img: "manik.jpg",
-                  caption: "Honorable CM\nTripura",
+                  caption: "Professor (Dr.) Manik Saha\nHon'ble Chief Minister",
                   cardBg: "bg-amber-50",
                 },
                 {
                   img: "m2.jpeg",
-                  caption: "Honorable Chairman THHCL",
+                  caption: "Kishor Barman\nHon'ble Chairman, THHDC",
                   cardBg: "bg-blue-50",
                 },
                 {
                   img: "m3.jpeg",
-                  caption: "Honorable Secretary THHCL",
+                  caption: "L T Darlong, IAS\nSecretary, THHDC",
                   cardBg: "bg-green-50",
                 },
               ].map((person, idx, arr) => {
@@ -199,7 +199,7 @@ const About = () => {
                 return (
                   <div
                     key={personData.img}
-                    className={`flex flex-col ${personData.cardBg} rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 w-72`}
+                    className={`flex flex-col ${personData.cardBg} rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 w-72 transform transition-transform duration-300 hover:scale-105`}
                   >
                     {/* Image */}
                     <div className="relative h-56 w-full overflow-hidden">
@@ -254,7 +254,10 @@ const About = () => {
             >
               Purbasha's History
             </h2>
-            <p className="text-lg text-center text-gray-700">
+            <p
+              className="text-lg text-center text-gray-700"
+              style={{ textAlign: "justify" }}
+            >
               Purbasha Tripura is the official handicrafts brand of the
               Government of Tripura, dedicated to preserving and promoting the
               state's rich artisanal heritage. With a diverse collection that
@@ -270,12 +273,15 @@ const About = () => {
           </div>
           <div>
             <h2
-              className="text-2xl font-bold text-center mb-3 font-cursive"
+              className="text-3xl font-bold text-center mb-3 font-cursive"
               style={{ fontFamily: "Dancing Script, cursive" }}
             >
               Tripura Handloom: A Tapestry of Tradition and Culture
             </h2>
-            <p className="text-base text-center text-gray-700">
+            <p
+              className="text-lg text-center text-gray-700"
+              style={{ textAlign: "justify" }}
+            >
               Tripura, nestled in the northeast of India, is a land rich in
               cultural heritage and traditional crafts. Among its many artistic
               expressions, handloom weaving stands out as a timeless emblem of
@@ -287,12 +293,15 @@ const About = () => {
           </div>
           <div>
             <h3
-              className="text-xl font-bold text-center mb-2 font-cursive"
+              className="text-3xl font-bold text-center mb-2 font-cursive"
               style={{ fontFamily: "Dancing Script, cursive" }}
             >
               A Living Heritage
             </h3>
-            <p className="text-base text-center text-gray-700">
+            <p
+              className="text-lg text-center text-gray-700"
+              style={{ textAlign: "justify" }}
+            >
               The art of handloom weaving in Tripura has been passed down
               through generations, especially among the tribal communities such
               as the Reangs, Lushais, and Tripuris. Each community has developed
@@ -305,29 +314,38 @@ const About = () => {
           </div>
           <div>
             <h3
-              className="text-xl font-bold text-center mb-2 font-cursive"
+              className="text-3xl font-bold text-center mb-2 font-cursive"
               style={{ fontFamily: "Dancing Script, cursive" }}
             >
               Distinctive Designs and Products
             </h3>
-            <p className="text-base text-center text-gray-700 mb-2">
+            <p
+              className="text-lg text-center text-gray-700 mb-2"
+              style={{ textAlign: "justify" }}
+            >
               Tripura's handloom is known for its vibrant colors, geometrical
               patterns, and eco-friendly materials. The fabrics often feature
               traditional designs like rignai, rihamp, and kamchwlwi borok,
               which hold cultural significance.
             </p>
-            <p className="text-base text-center text-gray-700 mb-2">
+            <p
+              className="text-lg text-center text-gray-700 mb-2"
+              style={{ textAlign: "justify" }}
+            >
               Handloom products from the state include:
             </p>
-            <ul className="list-disc list-inside text-base text-gray-700 mx-auto max-w-lg">
+            <ul
+              className="list-disc list-inside text-lg text-gray-700 mx-auto max-w-3xl"
+              style={{ textAlign: "justify" }}
+            >
               <li>
                 Traditional garments like rignai (wraparound skirts), risa
-                (breast cloth), and rikutu (upper body wrap)
+                (breast cloth), and rikutu (body wrap).
               </li>
-              <li>Elegant stoles, scarves, shawls, and dupattas</li>
+              <li>Elegant stoles, scarves, shawls, and dupattas.</li>
               <li>
-                Contemporary home décor items such as cushion covers, curtains,
-                and table runners
+                Contemporary home décor items such as cushion covers, curtains
+                and table runners.
               </li>
             </ul>
           </div>
