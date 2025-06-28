@@ -179,8 +179,8 @@ const About = () => {
             <div className="flex flex-row justify-center gap-8 mb-2 w-full">
               {["manik.jpg", "m3.jpeg", "m2.jpeg"].map((img, idx) => {
                 let caption = "Honorable CM Tripura";
-                if (idx === 1) caption = "Honorable Chairman THHCL";
-                if (idx === 2) caption = "Honorable Secretary THHCL";
+                if (idx === 1) caption = "Honorable Secretary THHCL";
+                if (idx === 2) caption = "Honorable Chairman THHCL";
                 return (
                   <div key={img} className="flex flex-col items-center">
                     <div className="w-48 h-48 md:w-56 md:h-56 rounded-xl overflow-hidden border-2 border-gray-200 bg-white flex items-center justify-center">

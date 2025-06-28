@@ -14,7 +14,7 @@ const Home = () => {
   const artisanData = [
     {
       id: "1",
-      name: "Purbasha Agartala",
+      name: "Purbasha-Agartala",
       image: "Purbasha2.jpg",
       location:
         "Purbasha, Tripura Handicrafts, Palace Compound, Agartala, Tripura 799001",
@@ -28,7 +28,7 @@ const Home = () => {
     },
     {
       id: "2",
-      name: "Purbasha Mumbai",
+      name: "Purbasha-Mumbai",
       image: "Purbasha3.jpg",
       location:
         "Purbasha, Tripura Bhawan, Vashi, Navi Mumbai, Maharashtra 400703",
@@ -42,7 +42,7 @@ const Home = () => {
     },
     {
       id: "3",
-      name: "Purbasha Kolkata",
+      name: "Purbasha-Kolkata",
       image: "Purbasha4.jpg",
       location:
         "Purbasha Tripura Govt, Middleton Row, Park Street, Kolkata, West Bengal 700071",
@@ -56,7 +56,7 @@ const Home = () => {
     },
     {
       id: "4",
-      name: "Purbasha Bangalore",
+      name: "Purbasha-Bangalore",
       image: "Purbasha5.jpg",
       location:
         "Purbasha, Tripura Bhawan, 17, KHB Colony, 5th Block, Koramangala, Bengaluru",
