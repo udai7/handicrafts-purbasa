@@ -1,52 +1,53 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const coverImages = ["/pic/c1.jpeg", "/pic/c2.jpg", "/pic/cover%20pic%203.jpg"];
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  const [animateKey, setAnimateKey] = useState(0);
 
   useEffect(() => {
+    // Preload all images
+    coverImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % coverImages.length);
-    }, 4000);
+      setCurrentImage((prev) => {
+        const next = (prev + 1) % coverImages.length;
+        setAnimateKey((k) => k + 1); // Trigger animation
+        return next;
+      });
+    }, 4000); // Change image every 4 seconds
+
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section
       className="relative min-h-[100vh] flex items-center justify-center overflow-hidden"
-      style={{
-        background: "black",
-      }}
+      style={{ background: "black" }}
     >
-      {/* Optimized background image transition with no gaps */}
-      <AnimatePresence>
-        <motion.div
-          key={currentImage}
-          initial={{ scale: 1.05, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.95, opacity: 0 }}
-          transition={{
-            duration: 1.2,
-            ease: "easeInOut",
-            opacity: { duration: 0.8 },
-          }}
-          className="absolute inset-0 w-full h-full z-0"
-          style={{
-            backgroundImage: `url(${coverImages[currentImage]})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            willChange: "transform, opacity",
-          }}
-        />
-      </AnimatePresence>
+      {/* Animated background image with stretch effect */}
+      <motion.div
+        key={animateKey}
+        initial={{ scale: 1.1, opacity: 0.7 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+        className="absolute inset-0 w-full h-full z-0"
+        style={{
+          backgroundImage: `url(${coverImages[currentImage]})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
 
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-black/40 z-10"></div>
 
-      {/* Decorative Elements - Reduced number and simplified */}
+      {/* Decorative Elements */}
       <div className="absolute top-1/4 left-10 w-32 h-32 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
       <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
 
