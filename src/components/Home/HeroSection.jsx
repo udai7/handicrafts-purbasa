@@ -5,7 +5,8 @@ const coverImages = ["/pic/c1.jpeg", "/pic/c2.jpg", "/pic/cover%20pic%203.jpg"];
 
 const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
-  const [animateKey, setAnimateKey] = useState(0);
+  const [prevImage, setPrevImage] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     // Preload all images
@@ -15,45 +16,66 @@ const HeroSection = () => {
     });
 
     const interval = setInterval(() => {
-      setCurrentImage((prev) => {
-        const next = (prev + 1) % coverImages.length;
-        setAnimateKey((k) => k + 1); // Trigger animation
-        return next;
-      });
-    }, 4000); // Change image every 4 seconds
+      setPrevImage(coverImages[currentImage]);
+      setCurrentImage((prev) => (prev + 1) % coverImages.length);
+      setIsTransitioning(true);
+
+      // Reset the transition flag after the animation duration
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 1000); // match fade duration
+    }, 4000); // Change every 4 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [currentImage]);
 
   return (
     <section
       className="relative min-h-[100vh] flex items-center justify-center overflow-hidden"
       style={{ background: "black" }}
     >
-      {/* Animated background image with stretch effect */}
+      {/* Previous Image (fade out) */}
+      {isTransitioning && prevImage && (
+        <motion.div
+          key={prevImage}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full z-0"
+          style={{
+            backgroundImage: `url(${prevImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            position: "absolute",
+          }}
+        />
+      )}
+
+      {/* Current Image (fade in) */}
       <motion.div
-        key={animateKey}
-        initial={{ scale: 1.1, opacity: 0.7 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
+        key={coverImages[currentImage]}
+        initial={{ opacity: 0.7 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
         className="absolute inset-0 w-full h-full z-0"
         style={{
           backgroundImage: `url(${coverImages[currentImage]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          position: "absolute",
         }}
       />
 
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-black/40 z-10"></div>
 
-      {/* Decorative Elements */}
+      {/* Decorative Blurred Circles */}
       <div className="absolute top-1/4 left-10 w-32 h-32 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
       <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
 
-      {/* Content Container */}
+      {/* Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12 py-40 flex flex-col items-center text-center text-white">
-        {/* Handcrafted Label */}
+        {/* Label */}
         <motion.div
           className="bg-white border border-gray-200 text-black px-4 py-1 rounded-full text-sm font-medium mb-6"
           initial={{ opacity: 0, y: -20 }}
@@ -63,7 +85,7 @@ const HeroSection = () => {
           Handcrafted with passion
         </motion.div>
 
-        {/* Animated Heading */}
+        {/* Title */}
         <motion.h1
           className="text-7xl md:text-9xl font-extrabold mb-6 leading-tight text-white drop-shadow-lg"
           initial={{ opacity: 0, y: -20 }}
